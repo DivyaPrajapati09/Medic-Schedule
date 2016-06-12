@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Medic Schedule</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="Reminder">Select the reminder</string>
+    <string-array name="Reminder_arrays">
+        <item>"Monday"</item>
+        <item>"Tuesday"</item>
+        <item>"Wednesday"</item>
+        <item>"Thursday</item>
+        <item>"Friday"</item>
+        <item>"Saturday"</item>
+        <item>"Sunday"</item>
+    </string-array>
+
+    <string name="Medicie_type"></string>
+    <string-array name="Medicine_type">
+        <item>"Capsule"</item>
+        <item>"Syrup"</item>
+        <item>"Injection"</item>
+        <item>"Tablet</item>
+        <item>"Drops"</item>
+
+    </string-array>
+
+
+    <string name="p_id"></string>
+
+
+    <string name="str_btn_find">Find</string>
+
+
+    <string-array name="place_type">
+    <item>doctor</item>
+    <item>hospital</item>
+    </string-array>
+
+    <string-array name="place_type_name">
+    <item>Doctor</item>
+    <item>Hospital</item>
+    </string-array>
+</resources>
