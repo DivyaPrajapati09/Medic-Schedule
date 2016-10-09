@@ -11,7 +11,7 @@
         android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add"
+        android:id="@+id/add_d"
         style="@style/FloatingButtonStyle"
         android:layout_alignBottom="@+id/list_d"
         android:src="@drawable/ic_action_add" />

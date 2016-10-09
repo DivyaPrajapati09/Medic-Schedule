@@ -7,7 +7,7 @@
     <EditText
         android:id="@+id/m_name"
         style="@style/EditText"
-        android:hint="Enter Medicine Name"
+        android:hint="@string/enter_medicine_name"
         android:inputType="textPersonName" />
 
     <Spinner
@@ -19,23 +19,23 @@
     <EditText
         android:id="@+id/reminder_time"
         style="@style/EditText"
-        android:hint="Enter reminder time" />
+        android:hint="@string/enter_reminder_time" />
 
     <EditText
         android:id="@+id/duration"
         style="@style/EditText"
-        android:hint="Enter duration"
+        android:hint="@string/enter_duration"
         android:inputType="number" />
 
     <EditText
         android:id="@+id/start_date"
         style="@style/EditText"
-        android:hint="Enter the start date" />
+        android:hint="@string/enter_the_start_date" />
 
     <EditText
         android:id="@+id/days"
         style="@style/EditText"
-        android:hint="Enter the no of days"
+        android:hint="@string/enter_the_no_of_days"
         android:inputType="number" />
 
     <Spinner
@@ -47,7 +47,7 @@
     <EditText
         android:id="@+id/dosage"
         style="@style/EditText"
-        android:hint="Enter the dosage" />
+        android:hint="@string/enter_the_dosage" />
 
     <Spinner
         android:id="@+id/p_name"
@@ -62,5 +62,5 @@
     <Button
         android:id="@+id/med_add"
         style="@style/ButtonStyle"
-        android:text="Save" />
+        android:text="@string/save" />
 </LinearLayout>

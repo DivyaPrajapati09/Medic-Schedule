@@ -45,4 +45,20 @@
         <item>Hospital</item>
     </string-array>
     <string name="title_activity_extra">extra</string>
+    <string name="enter_pulse">Enter pulse</string>
+    <string name="save">Save</string>
+    <string name="view">View</string>
+    <string name="enter_doctor_name">Enter Doctor Name</string>
+    <string name="enter_doctor_s_e_mail_address">Enter Doctor\'s e-mail address</string>
+    <string name="enter_doctor_s_phone_no">Enter Doctor\'s Phone No.</string>
+    <string name="enter_the_dosage">Enter the dosage</string>
+    <string name="enter_the_start_date">Enter the start date</string>
+    <string name="enter_the_no_of_days">Enter the no of days</string>
+    <string name="enter_duration">Enter duration</string>
+    <string name="enter_reminder_time">Enter reminder time</string>
+    <string name="enter_medicine_name">Enter Medicine Name</string>
+    <string name="enter_patient_name">Enter Patient Name</string>
+    <string name="patient">Add Patient</string>
+    <string name="doctor">Add Doctor</string>
+    <string name="medicine">Add Medicine</string>
 </resources>

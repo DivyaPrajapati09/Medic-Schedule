@@ -8,7 +8,7 @@
     <EditText
         android:id="@+id/p_name"
         style="@style/EditText"
-        android:hint="Enter Patient Name"
+        android:hint="@string/enter_patient_name"
         android:inputType="textPersonName" />
 
     <Button

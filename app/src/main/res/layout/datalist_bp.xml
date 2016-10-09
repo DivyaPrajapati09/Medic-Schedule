@@ -51,7 +51,7 @@
 
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/add"
+            android:id="@+id/add_blood_pressure"
             style="@style/FloatingButtonStyle"
             android:layout_alignBottom="@+id/bloodpressureList"
             android:src="@drawable/ic_action_add"/>

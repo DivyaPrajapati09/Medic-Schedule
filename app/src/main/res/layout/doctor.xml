@@ -8,23 +8,23 @@
     <EditText
         android:id="@+id/d_name"
         style="@style/EditText"
-        android:hint="Enter Doctor Name"
+        android:hint="@string/enter_doctor_name"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/txt_mail"
         style="@style/EditText"
-        android:hint="Enter Doctor&apos;s Mail"
+        android:hint="@string/enter_doctor_s_e_mail_address"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/txt_phn"
         style="@style/EditText"
-        android:hint="Enter Doctor&apos;s Phone No."
+        android:hint="@string/enter_doctor_s_phone_no"
         android:inputType="phone" />
 
     <Button
         android:id="@+id/b11"
         style="@style/ButtonStyle"
-        android:text="Save" />
+        android:text="@string/save" />
 </LinearLayout>

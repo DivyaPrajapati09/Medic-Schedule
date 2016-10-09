@@ -12,7 +12,7 @@
         android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add"
+        android:id="@+id/add_medicine"
         style="@style/FloatingButtonStyle"
         android:layout_alignBottom="@+id/datalist_m"
         android:src="@drawable/ic_action_add" />

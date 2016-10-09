@@ -20,16 +20,16 @@
     <EditText
         android:id="@+id/pulse"
         style="@style/EditText"
-        android:hint="Enter pulse" />
+        android:hint="@string/enter_pulse" />
 
     <Button
         android:id="@+id/btn_ent"
         style="@style/ButtonStyle"
-        android:text="Save"
+        android:text="@string/save"
         android:gravity="center"/>
 
     <Button
         android:id="@+id/btn_view"
         style="@style/ButtonStyle"
-        android:text="View" />
+        android:text="@string/view" />
 </LinearLayout>
