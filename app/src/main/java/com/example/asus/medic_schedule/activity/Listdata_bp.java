@@ -1,4 +1,4 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.activity;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -15,31 +15,31 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.asus.medic_schedule.CustomListViewAdapter;
+import com.example.asus.medic_schedule.R;
+import com.example.asus.medic_schedule.RowItem_bp;
+
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ASUS on 1/31/2015.
- */
-public class Listdata_bp extends ActionBarActivity implements AdapterView.OnItemClickListener
-{
+public class Listdata_bp extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     ListView list;
     Button btn_add;
 
-    private final String DB_NAME="MEDICDB";
-    private final String TABLE_NAME="BP_DB";
+    private final String DB_NAME = "MEDICDB";
+    private final String TABLE_NAME = "BP_DB";
 
     ArrayList<String> results = new ArrayList<String>();
 
-    SQLiteDatabase db=null;
+    SQLiteDatabase db = null;
 
 
-   // public static final Integer[] images = {R.drawable.heart1};
-   // public static final Integer[] sys={};
+    // public static final Integer[] images = {R.drawable.heart1};
+    // public static final Integer[] sys={};
     //public static final Integer[] dys={};
     //public static final Integer[] pul={};
-   // public static final Integer[] time={};
+    // public static final Integer[] time={};
 
     ListView listView;
     List<RowItem_bp> rowItems;
@@ -60,19 +60,19 @@ public class Listdata_bp extends ActionBarActivity implements AdapterView.OnItem
                 if (c.moveToFirst()) {
                     do {
 
-                       String sys = c.getString(c.getColumnIndex("systol"));
+                        String sys = c.getString(c.getColumnIndex("systol"));
                         String dys = c.getString(c.getColumnIndex("dystol"));
                         String pul = c.getString(c.getColumnIndex("pulse"));
 
-                      listView = (ListView) findViewById(R.id.list);
-                       rowItems = new ArrayList<RowItem_bp>();
-                       for (int i = 1; i <=sys.length(); i++) {
-                       RowItem_bp item = new RowItem_bp(sys,dys,pul);
+                        listView = (ListView) findViewById(R.id.list);
+                        rowItems = new ArrayList<RowItem_bp>();
+                        for (int i = 1; i <= sys.length(); i++) {
+                            RowItem_bp item = new RowItem_bp(sys, dys, pul);
                             rowItems.add(item);
-                       }
+                        }
 
 
-                      CustomListViewAdapter adapter = new CustomListViewAdapter(this,
+                        CustomListViewAdapter adapter = new CustomListViewAdapter(this,
                                 R.layout.listdata_bp, rowItems);
                         list.setAdapter(adapter);
                         list.setOnItemClickListener(this);
@@ -97,11 +97,12 @@ public class Listdata_bp extends ActionBarActivity implements AdapterView.OnItem
         });
 
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
     }
-    }
+}
 
 
 

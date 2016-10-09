@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Patient"
         android:id="@+id/btn_patn"
-        android:layout_gravity="center_horizontal"
-        android:background="#009688"
-        android:textColor="#ffffffff"
-        android:layout_margin="10dp" />
-
-    <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Doctor"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:background="#009688"
+        android:text="Patient"
+        android:textColor="#ffffffff" />
+
+    <Button
         android:id="@+id/btn_doc"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#ffffffff"
-        android:layout_margin="10dp"
-        android:background="#009688" />
-
-    <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Medicine"
-        android:id="@+id/btn_med"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
         android:background="#009688"
+        android:text="Doctor"
+        android:textColor="#ffffffff" />
+
+    <Button
+        android:id="@+id/btn_med"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#009688"
+        android:text="Medicine"
         android:textColor="#ffffffff" />
 
 </LinearLayout>

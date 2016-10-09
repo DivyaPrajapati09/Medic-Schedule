@@ -1,14 +1,12 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.activity;
 
-import android.app.Activity;
-import android.app.LauncherActivity;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseIntArray;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+
+import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +44,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         mListNameItem.add(3, "Other Data");
         mListNameItem.add(4, "Blood Preure Data"); //This item will be a subHeader
         mListNameItem.add(5, "Sugar Data");
-        mListNameItem.add(6,"Search");
+        mListNameItem.add(6, "Search");
 
         // icons list items
         List<Integer> mListIconItem = new ArrayList<>();
@@ -56,7 +54,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         mListIconItem.add(3, 0);
         mListIconItem.add(4, 0); //When the item is a subHeader the value of the icon 0
         mListIconItem.add(5, 0);
-        mListIconItem.add(6,0);
+        mListIconItem.add(6, 0);
 
         //{optional} - Among the names there is some subheader, you must indicate it here
         List<Integer> mListHeaderItem = new ArrayList<>();
@@ -74,34 +72,26 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
 
 
-
     }
 
     @Override
     public void onItemClickNavigation(int position, int layoutContainerId) {
-        if(position==4)
-        {
-            Intent b=new Intent(getBaseContext(),DataList_bp.class);
+        if (position == 4) {
+            Intent b = new Intent(getBaseContext(), DataList_bp.class);
             startActivity(b);
 
-        }
-        else if(position==5)
-        {
-            Intent c=new Intent(getBaseContext(),DataList_su.class);
+        } else if (position == 5) {
+            Intent c = new Intent(getBaseContext(), DataList_su.class);
             //startActivity(c);
-        }
-        else if(position==6)
-        {
-            Intent d=new Intent(getBaseContext(),Places.class);
-            startActivity(d);
+        } else if (position == 6) {
+          //  Intent d = new Intent(getBaseContext(), Places.class);
+           // startActivity(d);
         }
 
     }
 
     @Override
     public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
-
-
 
 
     }

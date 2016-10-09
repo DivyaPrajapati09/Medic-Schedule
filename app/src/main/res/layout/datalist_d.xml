@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ListView
-            android:layout_width="match_parent"
-            android:layout_height="504dp"
-            android:id="@+id/android:list" android:layout_gravity="center_horizontal"
-        android:choiceMode="singleChoice" />
-
-    <Button
+        android:id="@+id/datalist_d"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Doctor"
-        android:id="@+id/btn_doc"
-        android:layout_gravity="center_horizontal"
-        android:background="#009688"
-        android:layout_margin="10dp"
-        android:textColor="#ffffffff" />
-</LinearLayout>
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add"
+        style="@style/FloatingButtonStyle"
+        android:layout_alignBottom="@+id/datalist_d"
+        android:src="@drawable/ic_action_add" />
+</RelativeLayout>

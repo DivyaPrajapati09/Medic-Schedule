@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-    android:weightSum="1">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:padding="5dp">
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="375dp"
         android:id="@+id/list_p"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Patient"
-        android:id="@+id/btn_pat"
-        android:layout_gravity="center_horizontal"
-        android:background="#009688"
-        android:textColor="#ffffffff" />
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add"
+        style="@style/FloatingButtonStyle"
+        android:layout_alignBottom="@+id/list_p"
+        android:src="@drawable/ic_action_add" />
+</RelativeLayout>

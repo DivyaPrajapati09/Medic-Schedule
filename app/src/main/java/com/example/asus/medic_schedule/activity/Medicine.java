@@ -1,8 +1,4 @@
-package com.example.asus.medic_schedule;
-
-/**
- * Created by ASUS on 1/18/2015.
- */
+package com.example.asus.medic_schedule.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,19 +17,18 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.asus.medic_schedule.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- * Created by ASUS on 1/17/2015.
- */
 public class Medicine extends ActionBarActivity {
 
     EditText m_name, reminder_time, duration, start_date, days, dosage;
     Spinner reminder, medicine_type, d_name, p_name;
     Button med_add;
 
-    String name, rem_time, dur, st, d, dos,re,mt,doc_nam,pat_nam;
+    String name, rem_time, dur, st, d, dos, re, mt, doc_nam, pat_nam;
 
     SQLiteDatabase db = null;
 
@@ -42,7 +37,6 @@ public class Medicine extends ActionBarActivity {
 
     ArrayList<String> d_results = new ArrayList<String>();
     ArrayList<String> p_results = new ArrayList<String>();
-
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -61,15 +55,15 @@ public class Medicine extends ActionBarActivity {
         medicine_type = (Spinner) findViewById(R.id.medicine_type);
         d_name = (Spinner) findViewById(R.id.d_name);
         p_name = (Spinner) findViewById(R.id.p_name);
-       med_add = (Button) findViewById(R.id.med_add);
+        med_add = (Button) findViewById(R.id.med_add);
 
         try {
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (m_id INTEGER PRIMARY KEY AUTOINCREMENT ,m_name VARCHAR,reminder INTEGER,reminder_time VARCHAR,duration VARCHAR,start_date INTEGER,Days INTEGER,medicine_type VARCHAR,Dosage INTEGER,d_name VARCHAR,p_name VARCHAR);");
         } catch (SQLiteException se) {
-            Log.e("Medicine", "could not create or open database: "+se);
+            Log.e("Medicine", "could not create or open database: " + se);
         }
-      //  medicine_type.setOnItemSelectedListener(this);
+        //  medicine_type.setOnItemSelectedListener(this);
         loadSpinnerDataDoctor();
         loadSpinnerDataPatient();
 
@@ -78,7 +72,7 @@ public class Medicine extends ActionBarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
 
-                re=parent.getItemAtPosition(pos).toString();
+                re = parent.getItemAtPosition(pos).toString();
             }
 
             @Override
@@ -90,7 +84,7 @@ public class Medicine extends ActionBarActivity {
         medicine_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                mt=parent.getItemAtPosition(pos).toString();
+                mt = parent.getItemAtPosition(pos).toString();
                 //Toast.makeText(getBaseContext(),String.valueOf(pos),Toast.LENGTH_LONG).show();
             }
 
@@ -103,7 +97,7 @@ public class Medicine extends ActionBarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
 
-                doc_nam=String.valueOf(parent);
+                doc_nam = String.valueOf(parent);
             }
 
             @Override
@@ -115,7 +109,7 @@ public class Medicine extends ActionBarActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
 
-                pat_nam=String.valueOf(parent);
+                pat_nam = String.valueOf(parent);
             }
 
             @Override
@@ -123,8 +117,6 @@ public class Medicine extends ActionBarActivity {
 
             }
         });
-
-
 
 
         med_add.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +133,7 @@ public class Medicine extends ActionBarActivity {
               /* re=reminder.toString();
 
                 mt=medicine_type.toString();*/
-               // doc_nam=d_name.toString();
+                // doc_nam=d_name.toString();
                 //pat_nam=p_name.toString();
 
                 try {
@@ -173,18 +165,18 @@ public class Medicine extends ActionBarActivity {
                         String pa_name = d.getString(d.getColumnIndex("p_name"));
 
                         p_results.add(pa_name);
-                        Log.e("SpinnerPatient","results: "+p_results);
+                        Log.e("SpinnerPatient", "results: " + p_results);
                     } while (d.moveToNext());
                 }
             }
-            ArrayAdapter<String> aa=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,p_results);
+            ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, p_results);
             p_name.setAdapter(aa);
         } catch (SQLiteException se) {
-            Log.e("Medicine", "could not fetch the value"+se);
+            Log.e("Medicine", "could not fetch the value" + se);
         }
     }
 
-    private void loadSpinnerDataDoctor(){
+    private void loadSpinnerDataDoctor() {
         try {
             Cursor e = db.rawQuery("SELECT d_name FROM Doc_DB", null);
             if (e != null) {
@@ -196,7 +188,7 @@ public class Medicine extends ActionBarActivity {
                     } while (e.moveToNext());
                 }
             }
-            ArrayAdapter<String> bb=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,d_results);
+            ArrayAdapter<String> bb = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, d_results);
             d_name.setAdapter(bb);
         } catch (SQLiteException se) {
             Log.e("Medicine", "could not fetch the value");

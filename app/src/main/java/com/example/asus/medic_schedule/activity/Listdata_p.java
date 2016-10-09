@@ -1,9 +1,7 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.activity;
 
-/**
- * Created by ASUS on 1/18/2015.
- */
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,28 +14,29 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.asus.medic_schedule.Patient;
+import com.example.asus.medic_schedule.R;
+
 import java.util.ArrayList;
 
-/**
- * Created by ASUS on 1/18/2015.
- */
-public class Listdata_d extends ActionBarActivity {
+public class Listdata_p extends ActionBarActivity {
 
-    ListView list_d;
-    Button btn_doc;
+    ListView list_p;
+    Button btn_pat;
 
-    private final String DB_NAME="MEDICDB";
-    private final String TABLE_NAME="Doc_DB";
+    private final String DB_NAME = "MEDICDB";
+    private final String TABLE_NAME = "Patient_DB";
 
     ArrayList<String> results = new ArrayList<String>();
 
-    SQLiteDatabase db=null;
+    SQLiteDatabase db = null;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listdata_d);
-        list_d = (ListView) findViewById(R.id.list_d);
-        btn_doc=(Button)findViewById(R.id.btn_doc);
+        setContentView(R.layout.listdata_p);
+        list_p = (ListView) findViewById(R.id.list_p);
+        btn_pat = (Button) findViewById(R.id.btn_pat);
         try {
 
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
@@ -48,30 +47,29 @@ public class Listdata_d extends ActionBarActivity {
             {
                 if (c.moveToFirst()) {
                     do {
-                       // String doc_id = c.getString(c.getColumnIndex("d_id"));
-                        String doc_name = c.getString(c.getColumnIndex("d_name"));
-                        String doc_mail=c.getString(c.getColumnIndex("d_mail"));
-                        String doc_phn=c.getString(c.getColumnIndex("d_phn"));
 
-                        results.add("" + doc_name + "\n" + doc_mail + "\n" + doc_phn  );
+                        String pat_name = c.getString(c.getColumnIndex("p_name"));
+
+                        results.add(pat_name);
 
                     } while (c.moveToNext());
                 }
             }
 
-            Log.e("Medic_Schedule", "could not create or open database");
+            Log.e("Medic_Schedule1", "could not create or open database");
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, results);
-            list_d.setAdapter(adapter);
+            list_p.setAdapter(adapter);
 
-        } catch (SQLiteException se){
+        } catch (SQLiteException se) {
             Log.e("Medic_Schedule", "could not open or create database");
 
         }
 
-        btn_doc.setOnClickListener(new View.OnClickListener(){
+
+        btn_pat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public  void onClick(View view){
-                Intent in =new Intent(getBaseContext(),Doctor.class);
+            public void onClick(View view) {
+                Intent in = new Intent(getBaseContext(), Patient.class);
                 startActivity(in);
             }
         });

@@ -1,8 +1,5 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.activity;
 
-/**
- * Created by ASUS on 1/18/2015.
- */
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,54 +13,50 @@ import android.widget.EditText;
 
 import com.example.asus.medic_schedule.R;
 
-/**
- * Created by ASUS on 1/17/2015.
- */
-public class Patient extends ActionBarActivity  {
+public class Patient extends ActionBarActivity {
 
     EditText p_name;
-    Button b1,b2;
+    Button b1, b2;
 
     String name;
 
-    SQLiteDatabase db=null;
+    SQLiteDatabase db = null;
 
-    private final String DB_NAME="MEDICDB";
-    private final String TABLE_NAME="Patient_DB";
+    private final String DB_NAME = "MEDICDB";
+    private final String TABLE_NAME = "Patient_DB";
 
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient);
 
-       // p_id=(EditText)findViewById(R.id.p_id);
-        p_name=(EditText)findViewById(R.id.p_name);
-        b1=(Button)findViewById(R.id.b1);
+        // p_id=(EditText)findViewById(R.id.p_id);
+        p_name = (EditText) findViewById(R.id.p_name);
+        b1 = (Button) findViewById(R.id.b1);
         //b2=(Button)findViewById(R.id.b2);
 
-        try{
-            db=this.openOrCreateDatabase(DB_NAME,MODE_PRIVATE,null);
+        try {
+            db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (p_id INTEGER PRIMARY KEY AUTOINCREMENT,p_name VARCHAR);");
 
-        }   catch (SQLiteException se){
-            Log.e("Patient", "Could not create or Open the database: "+se);
+        } catch (SQLiteException se) {
+            Log.e("Patient", "Could not create or Open the database: " + se);
 
         }
 
-        b1.setOnClickListener(new View.OnClickListener(){
+        b1.setOnClickListener(new View.OnClickListener() {
             @Override
 
-            public void onClick(View view){
+            public void onClick(View view) {
                 //id= p_id.getText().toString();
-               name= p_name.getText().toString();
+                name = p_name.getText().toString();
 
 
-                try{
+                try {
                     db.execSQL("INSERT INTO " + TABLE_NAME + " (p_name) Values ('" + name + "');");
-                    Log.e("Patient","p_name:"+p_name);
+                    Log.e("Patient", "p_name:" + p_name);
 
-                } catch (SQLiteException se){
-                    Log.e("Patient","Error in insert query: "+se);
+                } catch (SQLiteException se) {
+                    Log.e("Patient", "Error in insert query: " + se);
 
 
                 }

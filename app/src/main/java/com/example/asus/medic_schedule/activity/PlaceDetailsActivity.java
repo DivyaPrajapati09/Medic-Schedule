@@ -1,10 +1,13 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.activity;
 
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
+
+import com.example.asus.medic_schedule.PlaceDetailsJSONParser;
+import com.example.asus.medic_schedule.R;
 
 import org.json.JSONObject;
 
@@ -16,10 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-/**
- * Created by ASUS on 2/26/2015.
- */
-public class PlaceDetailsActivity  extends Activity{
+public class PlaceDetailsActivity extends Activity {
 
     WebView mWvPlaceDetails;
 
@@ -38,7 +38,7 @@ public class PlaceDetailsActivity  extends Activity{
 
 
         StringBuilder sb = new StringBuilder("https://maps.googleapis.com/maps/api/place/details/json?");
-        sb.append("reference="+reference);
+        sb.append("reference=" + reference);
         sb.append("&sensor=true");
         sb.append("&key=AIzaSyAYn1HPUUPmbJQU1nN-w8wSRbsU-LUL5mQ");
 
@@ -48,15 +48,19 @@ public class PlaceDetailsActivity  extends Activity{
 
         // Invokes the "doInBackground()" method of the class PlaceTask
         placesTask.execute(sb.toString());
-    };
+    }
+
+    ;
 
 
-    /** A method to download json data from url */
+    /**
+     * A method to download json data from url
+     */
     private String downloadUrl(String strUrl) throws IOException {
         String data = "";
         InputStream iStream = null;
         HttpURLConnection urlConnection = null;
-        try{
+        try {
             URL url = new URL(strUrl);
 
 
@@ -71,26 +75,29 @@ public class PlaceDetailsActivity  extends Activity{
 
             BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
 
-            StringBuffer sb  = new StringBuffer();
+            StringBuffer sb = new StringBuffer();
 
             String line = "";
-            while( ( line = br.readLine())  != null){
+            while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
 
             data = sb.toString();
             br.close();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             Log.d("Exception while", e.toString());
-        }finally{
+        } finally {
             iStream.close();
             urlConnection.disconnect();
         }
 
         return data;
     }
-    /** A class, to download Google Place Details */
+
+    /**
+     * A class, to download Google Place Details
+     */
     private class PlacesTask extends AsyncTask<String, Integer, String> {
 
         String data = null;
@@ -98,16 +105,17 @@ public class PlaceDetailsActivity  extends Activity{
         // Invoked by execute() method of this object
         @Override
         protected String doInBackground(String... url) {
-            try{
+            try {
                 data = downloadUrl(url[0]);
-            }catch(Exception e){
-                Log.d("Background Task",e.toString());
+            } catch (Exception e) {
+                Log.d("Background Task", e.toString());
             }
             return data;
         }
+
         // Executed after the complete execution of doInBackground() method
         @Override
-        protected void onPostExecute(String result){
+        protected void onPostExecute(String result) {
             ParserTask parserTask = new ParserTask();
 
             // Start parsing the Google place details in JSON format
@@ -117,33 +125,35 @@ public class PlaceDetailsActivity  extends Activity{
     }
 
 
-    /** A class to parse the Google Place Details in JSON format */
-    private class ParserTask extends AsyncTask<String, Integer, HashMap<String,String>>{
+    /**
+     * A class to parse the Google Place Details in JSON format
+     */
+    private class ParserTask extends AsyncTask<String, Integer, HashMap<String, String>> {
 
         JSONObject jObject;
 
         // Invoked by execute() method of this object
         @Override
-        protected HashMap<String,String> doInBackground(String... jsonData) {
+        protected HashMap<String, String> doInBackground(String... jsonData) {
 
             HashMap<String, String> hPlaceDetails = null;
             PlaceDetailsJSONParser placeDetailsJsonParser = new PlaceDetailsJSONParser();
 
-            try{
+            try {
                 jObject = new JSONObject(jsonData[0]);
 
                 // Start parsing Google place details in JSON format
                 hPlaceDetails = placeDetailsJsonParser.parse(jObject);
 
-            }catch(Exception e){
-                Log.d("Exception",e.toString());
+            } catch (Exception e) {
+                Log.d("Exception", e.toString());
             }
             return hPlaceDetails;
         }
 
         // Executed after the complete execution of doInBackground() method
         @Override
-        protected void onPostExecute(HashMap<String,String> hPlaceDetails){
+        protected void onPostExecute(HashMap<String, String> hPlaceDetails) {
 
 
             String name = hPlaceDetails.get("name");
@@ -162,10 +172,10 @@ public class PlaceDetailsActivity  extends Activity{
             String mimeType = "text/html";
             String encoding = "utf-8";
 
-            String data = 	"<html>"+
-                    "<body><img style='float:left' src="+icon+" /><h1><center>"+name+"</center></h1>" +
+            String data = "<html>" +
+                    "<body><img style='float:left' src=" + icon + " /><h1><center>" + name + "</center></h1>" +
                     "<br style='clear:both' />" +
-                    "<hr  />"+
+                    "<hr  />" +
                     "<p>Vicinity : " + vicinity + "</p>" +
                     "<p>Location : " + lat + "," + lng + "</p>" +
                     "<p>Address : " + formatted_address + "</p>" +
@@ -182,4 +192,4 @@ public class PlaceDetailsActivity  extends Activity{
     }
 
 
-    }
+}

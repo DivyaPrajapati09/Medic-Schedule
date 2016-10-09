@@ -31,15 +31,18 @@
 
 
     <string name="str_btn_find">Find</string>
+    <string name="enter_systol">Enter systol</string>
+    <string name="enter_dystol">Enter Dystol</string>
 
 
     <string-array name="place_type">
-    <item>doctor</item>
-    <item>hospital</item>
+        <item>doctor</item>
+        <item>hospital</item>
     </string-array>
 
     <string-array name="place_type_name">
-    <item>Doctor</item>
-    <item>Hospital</item>
+        <item>Doctor</item>
+        <item>Hospital</item>
     </string-array>
+    <string name="title_activity_extra">extra</string>
 </resources>

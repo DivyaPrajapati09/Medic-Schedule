@@ -1,4 +1,4 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,21 +7,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.asus.medic_schedule.R;
 
-/**
- * Created by ASUS on 1/24/2015.
- */
 public class SettingsActivity extends ActionBarActivity {
 
-    Button btn_pat,btn_doc,btn_med;
+    Button btn_pat, btn_doc, btn_med;
 
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settingsactivity);
 
-        btn_pat=(Button)findViewById(R.id.btn_patn);
-        btn_doc=(Button)findViewById(R.id.btn_doc);
-        btn_med=(Button) findViewById(R.id.btn_med);
+        btn_pat = (Button) findViewById(R.id.btn_patn);
+        btn_doc = (Button) findViewById(R.id.btn_doc);
+        btn_med = (Button) findViewById(R.id.btn_med);
 
 
         btn_pat.setOnClickListener(new View.OnClickListener() {
@@ -42,10 +40,10 @@ public class SettingsActivity extends ActionBarActivity {
             }
         });
 
-        btn_med.setOnClickListener(new View.OnClickListener(){
+        btn_med.setOnClickListener(new View.OnClickListener() {
             @Override
-        public void onClick(View v){
-                Intent c=new Intent(getBaseContext(),Datalist_m.class);
+            public void onClick(View v) {
+                Intent c = new Intent(getBaseContext(), Datalist_m.class);
                 startActivity(c);
 
             }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
     <Spinner
         android:id="@+id/spr_place_type"
@@ -15,18 +16,18 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@id/spr_place_type"
-        android:text="@string/str_btn_find"
         android:layout_margin="10dp"
+        android:layout_toRightOf="@id/spr_place_type"
         android:background="#009688"
+        android:text="@string/str_btn_find"
         android:textColor="#ffffffff" />
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/spr_place_type"
-        class="com.google.android.gms.maps.SupportMapFragment" />
+        android:layout_below="@id/spr_place_type" />
 
 
 </RelativeLayout>

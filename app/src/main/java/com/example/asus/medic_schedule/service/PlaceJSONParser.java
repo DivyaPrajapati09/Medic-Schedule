@@ -1,4 +1,4 @@
-package com.example.asus.medic_schedule;
+package com.example.asus.medic_schedule.service;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by ASUS on 2/26/2015.
- */
 public class PlaceJSONParser {
 
     public List<HashMap<String, String>> parse(JSONObject jObject) {
