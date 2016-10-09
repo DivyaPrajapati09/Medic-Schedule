@@ -1,82 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <GridLayout
-        android:id="@+id/as"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:columnCount="1">
+    <TextView
+        android:id="@+id/m_name"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/m_name"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/reminder"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/reminder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/reminder_time"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/reminder_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/duration"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/duration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/start_date"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/start_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/Days"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/Days"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/medicine_type"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/medicine_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/Dosage"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/Dosage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="7"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/p_id"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/p_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="8"
-            android:textColor="#ff000000" />
+    <TextView
+        android:id="@+id/d_id"
+        style="@style/TextStyle"
+        android:layout_weight="1"
+        tools:text="abcd" />
 
-        <TextView
-            android:id="@+id/d_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="9"
-            android:textColor="#ff000000" />
-
-    </GridLayout>
 
 </LinearLayout>

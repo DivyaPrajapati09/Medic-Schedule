@@ -2,35 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:weightSum="3">
 
-    <GridLayout
-        android:id="@+id/re"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:columnCount="1">
+    <TextView
+        android:id="@+id/d_name"
+        style="@style/TextStyle"
+        android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/d_name"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:textColor="#ff000000"
-            android:textSize="20dp" />
+    <TextView
+        android:id="@+id/d_mail"
+        style="@style/TextStyle"
+        android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/d_mail"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:textColor="#ff000000"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/d_phn"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:textColor="#ff000000"
-            android:textSize="20dp" />
-    </GridLayout>
+    <TextView
+        android:id="@+id/d_phn"
+        style="@style/TextStyle"
+        android:layout_weight="1" />
 
 </LinearLayout>
