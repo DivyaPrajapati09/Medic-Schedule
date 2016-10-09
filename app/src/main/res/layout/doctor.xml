@@ -7,40 +7,24 @@
 
     <EditText
         android:id="@+id/d_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        style="@style/EditText"
         android:hint="Enter Doctor Name"
-        android:inputType="textPersonName"
-        android:textColor="#ff000000" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/txt_mail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
+        style="@style/EditText"
         android:hint="Enter Doctor&apos;s Mail"
-        android:inputType="textEmailAddress"
-        android:textColor="#ff000000" />
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/txt_phn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
+        style="@style/EditText"
         android:hint="Enter Doctor&apos;s Phone No."
-        android:inputType="phone"
-        android:textColor="#ff000000" />
+        android:inputType="phone" />
 
     <Button
         android:id="@+id/b11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:background="#009688"
-        android:text="OK"
-        android:textColor="#ffffffff" />
+        style="@style/ButtonStyle"
+        android:text="Save" />
 </LinearLayout>

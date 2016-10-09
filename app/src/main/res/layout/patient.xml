@@ -7,20 +7,12 @@
 
     <EditText
         android:id="@+id/p_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
+        style="@style/EditText"
         android:hint="Enter Patient Name"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/b1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:background="#009688"
-        android:text="OK"
-        android:textColor="#ffffffff" />
+        style="@style/ButtonStyle"
+        android:text="Save" />
 </LinearLayout>
