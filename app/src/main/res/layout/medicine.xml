@@ -62,5 +62,7 @@
     <Button
         android:id="@+id/med_add"
         style="@style/ButtonStyle"
-        android:text="@string/save" />
+        android:text="@string/save"
+        android:onClick="onSaveMe
+        dicineButtonClick"/>
 </LinearLayout>

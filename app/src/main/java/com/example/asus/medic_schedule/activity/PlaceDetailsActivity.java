@@ -5,9 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
-
-import com.example.asus.medic_schedule.PlaceDetailsJSONParser;
 import com.example.asus.medic_schedule.R;
+import com.example.asus.medic_schedule.service.PlaceDetailsJSONParser;
 
 import org.json.JSONObject;
 

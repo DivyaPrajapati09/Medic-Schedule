@@ -1,6 +1,5 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.asus.medic_schedule.Medicine;
 import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;

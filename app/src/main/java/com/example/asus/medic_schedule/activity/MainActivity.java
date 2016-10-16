@@ -1,33 +1,30 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseIntArray;
-import android.view.Menu;
-import android.view.View;
 
 import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.liveo.interfaces.NavigationLiveoListener;
+import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.navigationliveo.NavigationLiveo;
 
 
-public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
+public class MainActivity extends NavigationLiveo implements OnItemClickListener {
 
     public List<String> mListNameItem;
 
-    @Override
-    public void onUserInformation() {
-        //User information here
-        this.mUserName.setText("Yash Sharma");
-        this.mUserEmail.setText("yashsharma@gmail.com");
-        this.mUserPhoto.setImageResource(R.drawable.photo);
-        this.mUserBackground.setImageResource(R.drawable.meds);
-
-    }
+//    @Override
+//    public void onUserInformation() {
+//        //User information here
+//        this.mUserName.setText("Yash Sharma");
+//        this.mUserEmail.setText("yashsharma@gmail.com");
+//        this.mUserPhoto.setImageResource(R.drawable.photo);
+//        this.mUserBackground.setImageResource(R.drawable.meds);
+//
+//    }
 
     @Override
     public void onInt(Bundle savedInstanceState) {
@@ -75,38 +72,25 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     }
 
     @Override
-    public void onItemClickNavigation(int position, int layoutContainerId) {
-        if (position == 4) {
-            Intent b = new Intent(getBaseContext(), DataList_bp.class);
-            startActivity(b);
-
-        } else if (position == 5) {
-            Intent c = new Intent(getBaseContext(), DataList_su.class);
-            //startActivity(c);
-        } else if (position == 6) {
-          //  Intent d = new Intent(getBaseContext(), Places.class);
-           // startActivity(d);
-        }
+    public void onItemClick(int position) {
 
     }
 
-    @Override
-    public void onPrepareOptionsMenuNavigation(Menu menu, int position, boolean visible) {
-
-
-    }
-
-    @Override
-    public void onClickFooterItemNavigation(View v) {
-        Intent a = new Intent(getBaseContext(), com.example.asus.medic_schedule.SettingsActivity.class);
-        startActivity(a);
-
-    }
-
-    @Override
-    public void onClickUserPhotoNavigation(View v) {
-
-    }
+//    @Override
+//    public void onItemClickNavigation(int position, int layoutContainerId) {
+//        if (position == 4) {
+//            Intent b = new Intent(getBaseContext(), DataList_bp.class);
+//            startActivity(b);
+//
+//        } else if (position == 5) {
+//            Intent c = new Intent(getBaseContext(), DataList_su.class);
+//            //startActivity(c);
+//        } else if (position == 6) {
+//          //  Intent d = new Intent(getBaseContext(), Places.class);
+//           // startActivity(d);
+//        }
+//
+//    }
 
 
 

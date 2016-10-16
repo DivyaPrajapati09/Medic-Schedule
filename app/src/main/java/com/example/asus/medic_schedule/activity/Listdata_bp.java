@@ -1,12 +1,11 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
-import android.media.Image;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,9 +14,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.asus.medic_schedule.CustomListViewAdapter;
 import com.example.asus.medic_schedule.R;
-import com.example.asus.medic_schedule.RowItem_bp;
+import com.example.asus.medic_schedule.adapter.CustomListViewAdapter;
+import com.example.asus.medic_schedule.model.RowItem_bp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
 public class Listdata_bp extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     ListView list;
-    Button btn_add;
+    FloatingActionButton btn_add;
 
     private final String DB_NAME = "MEDICDB";
     private final String TABLE_NAME = "BP_DB";
@@ -49,7 +48,7 @@ public class Listdata_bp extends ActionBarActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listdata_bp);
         list = (ListView) findViewById(R.id.list);
-        btn_add = (Button) findViewById(R.id.btn_add);
+        btn_add = (FloatingActionButton) findViewById(R.id.add_bp);
 
         try {
 

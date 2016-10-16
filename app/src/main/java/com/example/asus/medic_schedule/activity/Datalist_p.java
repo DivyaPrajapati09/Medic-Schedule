@@ -6,13 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 
-import com.example.asus.medic_schedule.Patient;
 import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;
@@ -27,14 +26,14 @@ public class Datalist_p extends ListActivity {
 
     SQLiteDatabase db = null;
 
-    Button pat_add;
+    FloatingActionButton pat_add;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.datalist_p);
 
-        pat_add = (Button) findViewById(R.id.pat_add);
+        pat_add = (FloatingActionButton) findViewById(R.id.add_patient);
 
         try {
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);

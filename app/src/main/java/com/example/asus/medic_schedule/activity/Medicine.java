@@ -1,7 +1,5 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -11,23 +9,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
+
 
 import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Medicine extends ActionBarActivity {
 
     EditText m_name, reminder_time, duration, start_date, days, dosage;
     Spinner reminder, medicine_type, d_name, p_name;
-    Button med_add;
-
     String name, rem_time, dur, st, d, dos, re, mt, doc_nam, pat_nam;
 
     SQLiteDatabase db = null;
@@ -43,7 +36,6 @@ public class Medicine extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medicine);
 
-
         m_name = (EditText) findViewById(R.id.m_name);
         reminder = (Spinner) findViewById(R.id.reminder);
         reminder_time = (EditText) findViewById(R.id.reminder_time);
@@ -55,7 +47,6 @@ public class Medicine extends ActionBarActivity {
         medicine_type = (Spinner) findViewById(R.id.medicine_type);
         d_name = (Spinner) findViewById(R.id.d_name);
         p_name = (Spinner) findViewById(R.id.p_name);
-        med_add = (Button) findViewById(R.id.med_add);
 
         try {
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
@@ -117,44 +108,8 @@ public class Medicine extends ActionBarActivity {
 
             }
         });
-
-
-        med_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                name = m_name.getText().toString();
-                rem_time = reminder_time.getText().toString();
-                dur = duration.getText().toString();
-                st = start_date.getText().toString();
-                d = days.getText().toString();
-                dos = dosage.getText().toString();
-
-              /* re=reminder.toString();
-
-                mt=medicine_type.toString();*/
-                // doc_nam=d_name.toString();
-                //pat_nam=p_name.toString();
-
-                try {
-                    db.execSQL("INSERT INTO " + TABLE_NAME + "(m_name,reminder,reminder_time,duration,start_date,Days,medicine_type,Dosage,d_name,p_name) VALUES ('" + name + "','" + re + "','" + rem_time + "','" + dur + "','" + st + "','" + d + "','" + mt + "','" + dos + "','" + d_name + "','" + p_name + "');");
-                    Log.e("Medicine", "m_name inserted: " + name);
-                    Log.e("Medicine", "reminder inserted: " + re);
-                    Log.e("Medicine", "reminder_time inserted: " + rem_time);
-                    Log.e("Medicine", "duration inserted: " + dur);
-                    Log.e("Medicine", "start_date inserted: " + st);
-                    Log.e("Medicine", "Days inserted: " + d);
-                    Log.e("Medicine", "medicine_type inserted: " + mt);
-                    Log.e("Medicine", "Dosage inserted: " + dos);
-                    Log.e("Medicine", "d_id inserted: " + doc_nam);
-                    Log.e("Medicine", "p_id inserted: " + pat_nam);
-
-                } catch (SQLiteException se) {
-                    Log.e("Medicine", "Error in insert query" + se);
-                }
-            }
-        });
     }
+
 
     private void loadSpinnerDataPatient() {
         try {
@@ -194,7 +149,23 @@ public class Medicine extends ActionBarActivity {
             Log.e("Medicine", "could not fetch the value");
         }
     }
+
+    public void onSaveMedicineButtonClick(View view) {
+        name = m_name.getText().toString();
+        rem_time = reminder_time.getText().toString();
+        dur = duration.getText().toString();
+        st = start_date.getText().toString();
+        d = days.getText().toString();
+        dos = dosage.getText().toString();
+        try {
+            db.execSQL("INSERT INTO " + TABLE_NAME + "(m_name,reminder,reminder_time,duration,start_date,Days,medicine_type,Dosage,d_name,p_name) VALUES ('" + name + "','" + re + "','" + rem_time + "','" + dur + "','" + st + "','" + d + "','" + mt + "','" + dos + "','" + d_name + "','" + p_name + "');");
+        } catch (SQLiteException se) {
+            se.printStackTrace();
+        }
+    }
+
 }
+
 
 
 

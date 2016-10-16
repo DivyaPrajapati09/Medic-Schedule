@@ -14,5 +14,6 @@
     <Button
         android:id="@+id/b1"
         style="@style/ButtonStyle"
-        android:text="Save" />
+        android:text="@string/save"
+        android:onClick="onSavePatientButtonClick"/>
 </LinearLayout>

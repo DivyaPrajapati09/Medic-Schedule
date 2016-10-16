@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.asus.medic_schedule.R;
-import com.example.asus.medic_schedule.RowItem_bp;
+import com.example.asus.medic_schedule.model.RowItem_bp;
 
 import java.util.List;
 

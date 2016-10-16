@@ -1,55 +1,31 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.Button;
 
 import com.example.asus.medic_schedule.R;
 
 public class SettingsActivity extends ActionBarActivity {
 
-    Button btn_pat, btn_doc, btn_med;
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settingsactivity);
-
-        btn_pat = (Button) findViewById(R.id.btn_patn);
-        btn_doc = (Button) findViewById(R.id.btn_doc);
-        btn_med = (Button) findViewById(R.id.btn_med);
-
-
-        btn_pat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent a = new Intent(getBaseContext(), Datalist_p.class);
-                startActivity(a);
-            }
-        });
-
-
-        btn_doc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent b = new Intent(getBaseContext(), Datalist_d.class);
-                startActivity(b);
-
-            }
-        });
-
-        btn_med.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent c = new Intent(getBaseContext(), Datalist_m.class);
-                startActivity(c);
-
-            }
-        });
-
     }
 
+    public void onAddPatientButtonClick(View view) {
+        Intent a = new Intent(getBaseContext(), Datalist_p.class);
+        startActivity(a);
+    }
 
+    public void onAddDoctorButtonClick(View view) {
+        Intent b = new Intent(getBaseContext(), Datalist_d.class);
+        startActivity(b);
+    }
+
+    public void onAddMedicineButtonClick(View view) {
+        Intent c = new Intent(getBaseContext(), Datalist_m.class);
+        startActivity(c);
+    }
 }

@@ -10,16 +10,19 @@
     <Button
         android:id="@+id/btn_patn"
         style="@style/ButtonStyle"
-        android:text="@string/patient" />
+        android:text="@string/patient"
+        android:onClick="onAddPatientButtonClick"/>
 
     <Button
         android:id="@+id/btn_doc"
         style="@style/ButtonStyle"
-        android:text="@string/doctor" />
+        android:text="@string/doctor"
+        android:onClick="onAddDoctorButtonClick"/>
 
     <Button
         android:id="@+id/btn_med"
         style="@style/ButtonStyle"
-        android:text="@string/medicine" />
+        android:text="@string/medicine"
+        android:onClick="onAddMedicineButtonClick"/>
 
 </LinearLayout>

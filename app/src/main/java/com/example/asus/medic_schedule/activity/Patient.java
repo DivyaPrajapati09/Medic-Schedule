@@ -1,7 +1,5 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -16,7 +14,6 @@ import com.example.asus.medic_schedule.R;
 public class Patient extends ActionBarActivity {
 
     EditText p_name;
-    Button b1, b2;
 
     String name;
 
@@ -29,10 +26,7 @@ public class Patient extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient);
 
-        // p_id=(EditText)findViewById(R.id.p_id);
         p_name = (EditText) findViewById(R.id.p_name);
-        b1 = (Button) findViewById(R.id.b1);
-        //b2=(Button)findViewById(R.id.b2);
 
         try {
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
@@ -43,35 +37,21 @@ public class Patient extends ActionBarActivity {
 
         }
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View view) {
-                //id= p_id.getText().toString();
-                name = p_name.getText().toString();
-
-
-                try {
-                    db.execSQL("INSERT INTO " + TABLE_NAME + " (p_name) Values ('" + name + "');");
-                    Log.e("Patient", "p_name:" + p_name);
-
-                } catch (SQLiteException se) {
-                    Log.e("Patient", "Error in insert query: " + se);
-
-
-                }
-
-            }
-        });
-
-      /* b2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View view){
-                Intent in =new Intent(getBaseContext(),Listdata_p.class);
-                startActivity(in);
-            }
-        });*/
     }
 
+
+    public void onSavePatientButtonClick(View view) {
+        name = p_name.getText().toString();
+        try {
+            db.execSQL("INSERT INTO " + TABLE_NAME + " (p_name) Values ('" + name + "');");
+            Log.e("Patient", "p_name:" + p_name);
+
+        } catch (SQLiteException se) {
+            Log.e("Patient", "Error in insert query: " + se);
+
+
+        }
+
+    }
 }
 

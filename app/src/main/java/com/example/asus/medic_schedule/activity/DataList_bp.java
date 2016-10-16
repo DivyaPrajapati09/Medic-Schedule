@@ -1,18 +1,15 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.example.asus.medic_schedule.R;
 
