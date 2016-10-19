@@ -23,13 +23,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/list"
         android:label="@string/app_name"
         android:theme="@style/myTheme">
         <activity
-            android:name="activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/myTheme">
+            android:theme="@style/nLiveoDrawer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,41 +36,45 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="activity.Patient"
-            android:label="Patient" />
+            android:name="com.example.asus.medic_schedule.activity.Patient"
+            android:label="Patient"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name="activity.Doctor"
-            android:label="Doctor" />
+            android:name="com.example.asus.medic_schedule.activity.Doctor"
+            android:label="Doctor"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name="activity.Datalist_p"
+            android:name="com.example.asus.medic_schedule.activity.Datalist_p"
             android:label="Patient Data"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name="activity.Datalist_d"
+            android:name="com.example.asus.medic_schedule.activity.Datalist_d"
             android:label="DoctorData"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name="activity.Medicine"
-            android:label="Medicine" />
+            android:name="com.example.asus.medic_schedule.activity.Medicine"
+            android:label="Medicine"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
         <activity
             android:name="activity.Datalist_m"
             android:label="Medicine Data"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name="activity.SettingsActivity"
+            android:name="com.example.asus.medic_schedule.activity.SettingsActivity"
             android:label="Medic-Schedule" />
         <activity
             android:name="activity.BloodPressure"
-            android:label="Blood Pressure" />
+            android:label="Blood Pressure"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
         <activity
-            android:name="activity.DataList_bp"
+            android:name="com.example.asus.medic_schedule.activity.DataList_bp"
             android:label="Blood Pressure Data"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
         <activity
-            android:name="activity.PlaceDetailsActivity"
-            android:label="Places" />
-
+            android:name="com.example.asus.medic_schedule.activity.PlaceDetailsActivity"
+            android:label="Places"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" />
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

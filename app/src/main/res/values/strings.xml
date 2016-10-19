@@ -61,4 +61,10 @@
     <string name="patient">Add Patient</string>
     <string name="doctor">Add Doctor</string>
     <string name="medicine">Add Medicine</string>
+    <string name="settings">settings</string>
+    <string name="Medicines">medicine</string>
+    <string name="blood_pressure_data">Blood Pressure Data</string>
+    <string name="sugar_data">Blood Sugar Data</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
 </resources>

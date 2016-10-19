@@ -34,7 +34,7 @@ public class Medicine extends ActionBarActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medicine);
+         setContentView(R.layout.medicine);
 
         m_name = (EditText) findViewById(R.id.m_name);
         reminder = (Spinner) findViewById(R.id.reminder);
