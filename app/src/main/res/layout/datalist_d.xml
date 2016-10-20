@@ -6,13 +6,13 @@
     android:orientation="vertical">
 
     <ListView
-        android:id="@+id/datalist_d"
+        android:id="@+id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_doctor"
         style="@style/FloatingButtonStyle"
-        android:layout_alignBottom="@+id/datalist_d"
+        android:layout_alignBottom="@+id/android:list"
         android:src="@drawable/ic_action_add" />
 </RelativeLayout>

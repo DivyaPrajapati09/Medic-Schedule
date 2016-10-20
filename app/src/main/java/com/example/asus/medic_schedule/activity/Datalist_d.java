@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,14 +25,14 @@ public class Datalist_d extends ListActivity {
 
     SQLiteDatabase db = null;
 
-    Button btn_doc;
+    FloatingActionButton btn_doc;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.datalist_d);
 
-        btn_doc = (Button) findViewById(R.id.btn_doc);
+        btn_doc = (FloatingActionButton) findViewById(R.id.add_doctor);
 
         try {
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);

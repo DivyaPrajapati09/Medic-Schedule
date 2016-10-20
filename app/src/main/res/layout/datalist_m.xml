@@ -7,13 +7,13 @@
     android:padding="5dp">
 
     <ListView
-        android:id="@+id/datalist_m"
+        android:id="@+id/android:list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_medicine"
         style="@style/FloatingButtonStyle"
-        android:layout_alignBottom="@+id/datalist_m"
+        android:layout_alignBottom="@+id/android:list"
         android:src="@drawable/ic_action_add" />
 </RelativeLayout>

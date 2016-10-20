@@ -9,24 +9,40 @@ import android.view.View;
 
 import com.example.asus.medic_schedule.R;
 
-import java.util.List;
-
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import br.liveo.model.HelpLiveo;
 import br.liveo.navigationliveo.NavigationLiveo;
 
-
 public class MainActivity extends NavigationLiveo implements OnItemClickListener {
 
-    public List<String> mListNameItem;
     private HelpLiveo mHelpLiveo;
 
     @Override
     public void onItemClick(int position) {
+        Fragment mFragment = null;
         FragmentManager mFragmentManager = getSupportFragmentManager();
-        Fragment mFragment = new FragmentMain().newInstance(mHelpLiveo.get(position).getName());
 
+        switch (position) {
+            case 1:
+                mFragment = new Medicine();
+                break;
+            case 2:
+                mFragment = new BloodPressure();
+                break;
+            case 3:
+                mFragment = new BloodPressure();
+                break;
+            case 4:
+                closeDrawer();
+                Intent intent4 = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent4);
+                break;
+            default:
+                mFragment = FragmentMain.newInstance(mHelpLiveo.get(position).getName());
+                break;
+
+        }
         if (mFragment != null) {
             mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
         }
@@ -44,7 +60,6 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         mHelpLiveo = new HelpLiveo();
         mHelpLiveo.add(getString(R.string.home), R.drawable.ic_action_home, 7);
         mHelpLiveo.add(getString(R.string.Medicines), R.drawable.ic_action_add_black, 7);
-
         mHelpLiveo.add(getString(R.string.blood_pressure_data), R.drawable.ic_action_add_black);
         mHelpLiveo.add(getString(R.string.sugar_data), R.drawable.ic_action_add_black);
         mHelpLiveo.add(getString(R.string.search), R.drawable.ic_action_search);
@@ -64,29 +79,6 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
     private OnPrepareOptionsMenuLiveo onPrepare = new OnPrepareOptionsMenuLiveo() {
         @Override
         public void onPrepareOptionsMenu(Menu menu, int position, boolean visible) {
-            switch (position) {
-               // case 2:
-//                    Intent intent=new Intent(MainActivity.this,MainActivity.class);
-//                    startActivity(intent);
-//                    break;
-                case 3:
-                    Intent intent1=new Intent(MainActivity.this,Medicine.class);
-                    startActivity(intent1);
-                    break;
-                case 4:
-                    Intent intent2=new Intent(MainActivity.this,BloodPressure.class);
-                    startActivity(intent2);
-                    break;
-                case 5:
-                    Intent intent3=new Intent(MainActivity.this,BloodPressure.class);
-                    startActivity(intent3);
-                    break;
-                case 6:
-                    Intent intent4=new Intent(MainActivity.this,MainActivity.class);
-                    startActivity(intent4);
-                    break;
-
-            }
         }
     };
 

@@ -4,9 +4,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -17,7 +22,9 @@ import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;
 
-public class Medicine extends ActionBarActivity {
+import static android.content.Context.MODE_PRIVATE;
+
+public class Medicine extends Fragment {
 
     EditText m_name, reminder_time, duration, start_date, days, dosage;
     Spinner reminder, medicine_type, d_name, p_name;
@@ -31,25 +38,30 @@ public class Medicine extends ActionBarActivity {
     ArrayList<String> d_results = new ArrayList<String>();
     ArrayList<String> p_results = new ArrayList<String>();
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.medicine, container, false);
+    }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-         setContentView(R.layout.medicine);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        m_name = (EditText) findViewById(R.id.m_name);
-        reminder = (Spinner) findViewById(R.id.reminder);
-        reminder_time = (EditText) findViewById(R.id.reminder_time);
-        duration = (EditText) findViewById(R.id.duration);
-        start_date = (EditText) findViewById(R.id.start_date);
-        days = (EditText) findViewById(R.id.days);
-        dosage = (EditText) findViewById(R.id.dosage);
+        m_name = (EditText)getView().findViewById(R.id.m_name);
+        reminder = (Spinner)getView().findViewById(R.id.reminder);
+        reminder_time = (EditText)getView().findViewById(R.id.reminder_time);
+        duration = (EditText)getView().findViewById(R.id.duration);
+        start_date = (EditText)getView().findViewById(R.id.start_date);
+        days = (EditText)getView().findViewById(R.id.days);
+        dosage = (EditText)getView().findViewById(R.id.dosage);
 
-        medicine_type = (Spinner) findViewById(R.id.medicine_type);
-        d_name = (Spinner) findViewById(R.id.d_name);
-        p_name = (Spinner) findViewById(R.id.p_name);
+        medicine_type = (Spinner)getView().findViewById(R.id.medicine_type);
+        d_name = (Spinner)getView().findViewById(R.id.d_name);
+        p_name = (Spinner)getView().findViewById(R.id.p_name);
 
         try {
-            db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
+            db = getActivity().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (m_id INTEGER PRIMARY KEY AUTOINCREMENT ,m_name VARCHAR,reminder INTEGER,reminder_time VARCHAR,duration VARCHAR,start_date INTEGER,Days INTEGER,medicine_type VARCHAR,Dosage INTEGER,d_name VARCHAR,p_name VARCHAR);");
         } catch (SQLiteException se) {
             Log.e("Medicine", "could not create or open database: " + se);
@@ -124,7 +136,7 @@ public class Medicine extends ActionBarActivity {
                     } while (d.moveToNext());
                 }
             }
-            ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, p_results);
+            ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, p_results);
             p_name.setAdapter(aa);
         } catch (SQLiteException se) {
             Log.e("Medicine", "could not fetch the value" + se);
@@ -143,7 +155,7 @@ public class Medicine extends ActionBarActivity {
                     } while (e.moveToNext());
                 }
             }
-            ArrayAdapter<String> bb = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, d_results);
+            ArrayAdapter<String> bb = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, d_results);
             d_name.setAdapter(bb);
         } catch (SQLiteException se) {
             Log.e("Medicine", "could not fetch the value");

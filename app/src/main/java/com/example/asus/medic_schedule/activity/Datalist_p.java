@@ -50,11 +50,8 @@ public class Datalist_p extends ListActivity {
 
                         list.add(map);
                     } while (c.moveToNext());
-
                 }
-
             }
-
             Log.e("Datalist_p", "Total Records" + c.getCount());
         } catch (SQLiteException se) {
             Log.e("Datalist_p", "could not create or open database" + se);
