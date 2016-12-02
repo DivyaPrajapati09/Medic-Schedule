@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.SimpleAdapter;
@@ -16,7 +17,7 @@ import com.example.asus.medic_schedule.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListOfDoctor extends ListActivity {
+public class ListOfDoctor extends ActionBarActivity {
 
     static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
     private final String DB_NAME = "MEDICDB";
@@ -64,7 +65,7 @@ public class ListOfDoctor extends ListActivity {
         }
 
         SimpleAdapter ad = new SimpleAdapter(this, list, R.layout.rowdata_d, new String[]{"d_name", "d_mail", "d_phn"}, new int[]{R.id.d_name, R.id.d_mail, R.id.d_phn});
-        setListAdapter(ad);
+       // setListAdapter(ad);
 
         btn_doc.setOnClickListener(new View.OnClickListener() {
             @Override

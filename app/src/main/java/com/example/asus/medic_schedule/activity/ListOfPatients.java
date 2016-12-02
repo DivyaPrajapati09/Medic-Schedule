@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.SimpleAdapter;
@@ -16,7 +17,7 @@ import com.example.asus.medic_schedule.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListOfPatients extends ListActivity {
+public class ListOfPatients extends ActionBarActivity {
 
     static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 
@@ -58,7 +59,7 @@ public class ListOfPatients extends ListActivity {
         }
 
         SimpleAdapter adapt = new SimpleAdapter(this, list, R.layout.rowdata_p, new String[]{"p_name"}, new int[]{R.id.p_name});
-        setListAdapter(adapt);
+        //setListAdapter(adapt);
 
         pat_add.setOnClickListener(new View.OnClickListener() {
             @Override

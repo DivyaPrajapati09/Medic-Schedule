@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 
@@ -13,7 +14,7 @@ import com.example.asus.medic_schedule.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListOfBloodPressure extends ListActivity {
+public class ListOfBloodPressure extends ActionBarActivity {
 
     private static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
     private final String DB_NAME = "MEDICDB";
@@ -50,7 +51,7 @@ public class ListOfBloodPressure extends ListActivity {
                         list.add(map);
                     } while (c.moveToNext());
                     SimpleAdapter ada = new SimpleAdapter(this, list, R.layout.rowdata_bp, new String[]{"sys", "dys", "pul", "tim"}, new int[]{R.id.Sys, R.id.Dys, R.id.Pul, R.id.Time});
-                    setListAdapter(ada);
+                    //setListAdapter(ada);
 
                 }
             }

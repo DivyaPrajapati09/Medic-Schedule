@@ -37,31 +37,45 @@
         </activity>
         <activity
             android:name=".activity.AddPatientActivity"
-            android:label="Patient" />
+            android:label="Add Patient"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.AddDoctorActivity"
-            android:label="Doctor" />
+            android:label="Add Doctor"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.ListOfPatients"
-            android:label="Patient Data" />
+            android:label="Patient Data"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.ListOfDoctor"
-            android:label="DoctorData" />
+            android:label="Doctor Data"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.ListOfMedicine"
-            android:label="Medicine Data" />
+            android:label="Medicine Data"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.SettingsActivity"
-            android:label="Medic-Schedule" />
+            android:label="Settings"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.ListOfBloodPressure"
-            android:label="Blood Pressure Data" />
+            android:label="Blood Pressure Data"
+            android:theme="@style/myTheme" />
         <activity
             android:name=".activity.PlaceDetailsActivity"
-            android:label="Places" />
+            android:label="Places"
+            android:theme="@style/myTheme" />
 
-        <activity android:name=".fragment.AddBloodSugarFragment" />
-        <activity android:name=".activity.AddMedicineActivity" />
+        <activity
+            android:name=".fragment.AddBloodSugarFragment"
+            android:theme="@style/myTheme"
+            android:label="Add Blood Sugar"/>
+        <activity
+            android:name=".activity.AddMedicineActivity"
+            android:theme="@style/myTheme"
+            android:label="Add Medicine"/>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
