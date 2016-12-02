@@ -21,8 +21,7 @@ public class dbgenerator {
     }
 
     private static void addTables(final Schema schema) {
-        Entity user = addUser(schema);
-        Entity repo = addRepo(schema);
+
 
         Entity bloodPressure = addBloodPressure(schema);
         Entity bloodSugar = addBloodSugar(schema);
@@ -30,8 +29,6 @@ public class dbgenerator {
         Entity medicineData = addMedicineData(schema);
         Entity doctorDetails = addDoctorDetails(schema);
 
-        Property userId = repo.addLongProperty("userId").notNull().getProperty();
-        user.addToMany(repo, userId, "userRepos");
     }
 
     private static Entity addDoctorDetails(Schema schema) {
