@@ -1,4 +1,4 @@
-package com.example.asus.medic_schedule.activity;
+package com.example.asus.medic_schedule.fragment;
 
 import android.support.v4.app.Fragment;
 

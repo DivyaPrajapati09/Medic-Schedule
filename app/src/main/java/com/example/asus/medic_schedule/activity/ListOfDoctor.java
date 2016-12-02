@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SimpleAdapter;
 
 import com.example.asus.medic_schedule.R;
@@ -17,23 +16,22 @@ import com.example.asus.medic_schedule.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Datalist_p extends ListActivity {
+public class ListOfDoctor extends ListActivity {
 
     static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-
     private final String DB_NAME = "MEDICDB";
-    private final String TABLE_NAME = "Patient_DB";
+    private final String TABLE_NAME = "Doc_DB";
 
     SQLiteDatabase db = null;
 
-    FloatingActionButton pat_add;
+    FloatingActionButton btn_doc;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.datalist_p);
+        setContentView(R.layout.datalist_d);
 
-        pat_add = (FloatingActionButton) findViewById(R.id.add_patient);
+        btn_doc = (FloatingActionButton) findViewById(R.id.add_doctor);
 
         try {
             db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
@@ -43,30 +41,39 @@ public class Datalist_p extends ListActivity {
                 if (c.moveToFirst()) {
                     do {
                         HashMap<String, String> map = new HashMap<String, String>();
+                        // String doc_id=c.getString(c.getColumnIndex("d_id"));
+                        String doc_name = c.getString(c.getColumnIndex("d_name"));
+                        String doc_mail = c.getString(c.getColumnIndex("d_mail"));
+                        String doc_phn = c.getString(c.getColumnIndex("d_phn"));
 
-                        String pat_name = c.getString(c.getColumnIndex("p_name"));
-
-                        map.put("p_name", pat_name);
+                        //map.put("d_id",doc_id);
+                        map.put("d_name", doc_name);
+                        map.put("d_mail", doc_mail);
+                        map.put("d_phn", doc_phn);
 
                         list.add(map);
                     } while (c.moveToNext());
+
                 }
             }
-            Log.e("Datalist_p", "Total Records" + c.getCount());
+
+            Log.e("ListOfDoctor", "Total Records" + c.getCount());
         } catch (SQLiteException se) {
-            Log.e("Datalist_p", "could not create or open database" + se);
+            Log.e("ListOfDoctor", "could not create or open database");
 
         }
 
-        SimpleAdapter adapt = new SimpleAdapter(this, list, R.layout.rowdata_p, new String[]{"p_name"}, new int[]{R.id.p_name});
-        setListAdapter(adapt);
+        SimpleAdapter ad = new SimpleAdapter(this, list, R.layout.rowdata_d, new String[]{"d_name", "d_mail", "d_phn"}, new int[]{R.id.d_name, R.id.d_mail, R.id.d_phn});
+        setListAdapter(ad);
 
-        pat_add.setOnClickListener(new View.OnClickListener() {
+        btn_doc.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent f = new Intent(getBaseContext(), Patient.class);
-                startActivity(f);
+            public void onClick(View view) {
+                Intent in = new Intent(getBaseContext(), AddDoctorActivity.class);
+                startActivity(in);
             }
         });
     }
+
+
 }

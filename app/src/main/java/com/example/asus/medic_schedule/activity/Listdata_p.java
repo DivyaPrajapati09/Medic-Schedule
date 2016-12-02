@@ -10,7 +10,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.asus.medic_schedule.R;
@@ -67,7 +66,7 @@ public class Listdata_p extends ActionBarActivity {
         btn_pat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getBaseContext(), Patient.class);
+                Intent in = new Intent(getBaseContext(), AddPatientActivity.class);
                 startActivity(in);
             }
         });

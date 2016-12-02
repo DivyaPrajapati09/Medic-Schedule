@@ -9,13 +9,13 @@ import android.widget.EditText;
 
 import com.example.asus.medic_schedule.R;
 
-public class Doctor extends ActionBarActivity {
+public class AddDoctorActivity extends ActionBarActivity {
 
-    EditText d_name, txt_mail, txt_phn;
-    String name, phn, mail;
-    SQLiteDatabase db = null;
+    private EditText d_name, txt_mail, txt_phn;
+    private String name, phn, mail;
+    private SQLiteDatabase db = null;
 
-    private final String DB_NAME = "MEDICDB";
+    private static final String DB_NAME = "MEDICDB";
     private final String TABLE_NAME = "Doc_DB";
 
     public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ public class Doctor extends ActionBarActivity {
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (d_id INTEGER PRIMARY KEY AUTOINCREMENT,d_name VARCHAR,d_mail VARCHAR,d_phn INTEGER);");
         } catch (SQLiteException se) {
             se.printStackTrace();
-
         }
 
     }

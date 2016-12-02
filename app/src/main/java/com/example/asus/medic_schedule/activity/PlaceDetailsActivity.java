@@ -3,6 +3,7 @@ package com.example.asus.medic_schedule.activity;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.webkit.WebView;
 import com.example.asus.medic_schedule.R;
@@ -18,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-public class PlaceDetailsActivity extends Activity {
+public class PlaceDetailsActivity extends ActionBarActivity {
 
     WebView mWvPlaceDetails;
 

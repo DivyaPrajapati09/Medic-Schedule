@@ -23,15 +23,13 @@
         android:hint="@string/enter_pulse" />
 
     <Button
-        android:id="@+id/btn_ent"
+        android:id="@+id/btn_add"
         style="@style/ButtonStyle"
         android:gravity="center"
-        android:onClick="onSaveBloodPressureButtonClicked"
         android:text="@string/save" />
 
     <Button
         android:id="@+id/btn_view"
         style="@style/ButtonStyle"
-        android:text="@string/view"
-        android:onClick="onViewBloodPressureListClicked"/>
+        android:text="@string/view" />
 </LinearLayout>

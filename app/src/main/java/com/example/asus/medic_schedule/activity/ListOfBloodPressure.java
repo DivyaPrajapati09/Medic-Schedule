@@ -1,13 +1,10 @@
 package com.example.asus.medic_schedule.activity;
 
 import android.app.ListActivity;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 
@@ -16,14 +13,14 @@ import com.example.asus.medic_schedule.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DataList_bp extends ListActivity {
+public class ListOfBloodPressure extends ListActivity {
 
-    static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
+    private static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
     private final String DB_NAME = "MEDICDB";
     private final String TABLE_NAME = "BldP_DB";
 
-    Button add;
-    SQLiteDatabase db = null;
+    private Button add;
+    private SQLiteDatabase db = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,22 +38,14 @@ public class DataList_bp extends ListActivity {
                         HashMap<String, String> map = new HashMap<String, String>();
 
                         String sys = c.getString(c.getColumnIndex("systol"));
-                        Log.e("Blood Pressure", "systol entered in database" + c.getString(c.getColumnIndex("systol")));
                         String dys = c.getString(c.getColumnIndex("dystol"));
-                        Log.e("Blood Pressure", "dystol entered in database");
                         String pul = c.getString(c.getColumnIndex("pulse"));
-                        Log.e("Blood Pressure", "pulse entered in database");
                         String tim = c.getString(c.getColumnIndex("time"));
-                        Log.e("Blood Pressure", "time entered" + c.getString(c.getColumnIndex("time")));
-
 
                         map.put("sys", sys);
-
                         map.put("dys", dys);
                         map.put("pul", pul);
                         map.put("time", tim);
-
-                        Log.e("blood ", "time entered" + tim);
 
                         list.add(map);
                     } while (c.moveToNext());
@@ -65,24 +54,21 @@ public class DataList_bp extends ListActivity {
 
                 }
             }
-
-            Log.e("Blood Pressure", "Total Records" + c.getCount());
         } catch (SQLiteException se) {
-            Log.e("Blood Pressure", "could not create or open database" + se);
-
+            se.printStackTrace();
         }
 
 
         //SimpleAdapter adapter = new SimpleAdapter(this, list, R.layout.rowdata_bp, new String[]{"sys", "dys", "pul","time"}, new int[]{R.id.Sys, R.id.Dys, R.id.Pul,R.id.Time});
         //setListAdapter(adapter);
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent x = new Intent(getBaseContext(), BloodPressure.class);
-                startActivity(x);
-            }
-        });
+//        add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent x = new Intent(getBaseContext(), AddBloodPressureFragment.class);
+//                startActivity(x);
+//            }
+//        });
 
 
     }

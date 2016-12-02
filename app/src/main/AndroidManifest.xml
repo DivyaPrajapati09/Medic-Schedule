@@ -24,7 +24,7 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/myTheme">
+        android:theme="@style/nLiveoDrawer">
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
@@ -36,35 +36,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Patient"
+            android:name=".activity.AddPatientActivity"
             android:label="Patient" />
         <activity
-            android:name=".activity.Doctor"
+            android:name=".activity.AddDoctorActivity"
             android:label="Doctor" />
         <activity
-            android:name=".activity.Datalist_p"
+            android:name=".activity.ListOfPatients"
             android:label="Patient Data" />
         <activity
-            android:name=".activity.Datalist_d"
+            android:name=".activity.ListOfDoctor"
             android:label="DoctorData" />
         <activity
-            android:name="activity.Datalist_m"
+            android:name=".activity.ListOfMedicine"
             android:label="Medicine Data" />
         <activity
             android:name=".activity.SettingsActivity"
             android:label="Medic-Schedule" />
-
         <activity
-            android:name=".activity.DataList_bp"
+            android:name=".activity.ListOfBloodPressure"
             android:label="Blood Pressure Data" />
-
         <activity
             android:name=".activity.PlaceDetailsActivity"
             android:label="Places" />
 
+        <activity android:name=".fragment.AddBloodSugarFragment" />
+        <activity android:name=".activity.AddMedicineActivity" />
+
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAV3WG8YnuLJDN8F6qGDF6f5jQNIt8deng" />
+
     </application>
 
 </manifest>

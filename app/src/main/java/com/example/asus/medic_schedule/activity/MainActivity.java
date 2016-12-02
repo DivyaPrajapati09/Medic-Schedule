@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.View;
 
 import com.example.asus.medic_schedule.R;
+import com.example.asus.medic_schedule.fragment.AddBloodPressureFragment;
+import com.example.asus.medic_schedule.fragment.FragmentMain;
 
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
@@ -25,13 +27,13 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
 
         switch (position) {
             case 1:
-                mFragment = new Medicine();
+                //mFragment = new AddMedicineActivity();
                 break;
             case 2:
-                mFragment = new BloodPressure();
+                mFragment = new AddBloodPressureFragment();
                 break;
             case 3:
-                mFragment = new BloodPressure();
+                mFragment = new AddBloodPressureFragment();
                 break;
             case 4:
                 closeDrawer();

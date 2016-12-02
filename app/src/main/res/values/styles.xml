@@ -1,9 +1,9 @@
 <resources>
 
     <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/nliveo_teal_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/nliveo_teal_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_teal_alpha_colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
         <item name="editTextStyle">@style/EditText</item>
         <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
@@ -40,10 +40,8 @@
 
     <style name="FloatingButtonStyle">
         <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_margin">10dp</item>
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">60dp</item>
-        <item name="android:layout_gravity">end</item>
         <item name="android:background">@color/colorPrimary</item>
     </style>
 

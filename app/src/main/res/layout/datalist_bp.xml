@@ -1,60 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="2dp"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:weightSum="3">
+    android:weightSum="2">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0"
         android:weightSum="4">
 
         <TextView
             android:id="@+id/textView"
             style="@style/TextStyle"
             android:layout_weight="1"
-            android:text="Systol" />
+            android:text="@string/txt_systol"
+            tools:ignore="NestedWeights" />
 
         <TextView
             android:id="@+id/textView2"
             style="@style/TextStyle"
             android:layout_weight="1"
-            android:text="Dystol" />
+            android:text="@string/txt_dystol" />
 
         <TextView
             android:id="@+id/textView4"
             style="@style/TextStyle"
             android:layout_weight="1"
-            android:text="Pulse" />
+            android:text="@string/txt_pulse" />
 
         <TextView
             android:id="@+id/textView3"
             style="@style/TextStyle"
             android:layout_weight="1"
-            android:text="Time" />
+            android:text="@string/txt_time" />
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="2">
 
         <ListView
-            android:id="@+id/bloodpressureList"
+            android:id="@+id/android:list"
             android:layout_width="match_parent"
-            android:layout_height="459dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:choiceMode="singleChoice"
             android:divider="@color/black" />
 
-
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/add_blood_pressure"
-            style="@style/FloatingButtonStyle"
-            android:layout_alignBottom="@+id/bloodpressureList"
-            android:src="@drawable/ic_action_add"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/android:list"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ic_action_add"
+            app:elevation="0dp"
+            tools:ignore="RelativeOverlap,RtlHardcoded" />
     </RelativeLayout>
 
 

@@ -67,4 +67,8 @@
     <string name="sugar_data">Blood Sugar Data</string>
     <string name="search">Search</string>
     <string name="home">Home</string>
+    <string name="txt_dystol">Dystol</string>
+    <string name="txt_pulse">Pulse</string>
+    <string name="txt_systol">Systol</string>
+    <string name="txt_time">Time</string>
 </resources>

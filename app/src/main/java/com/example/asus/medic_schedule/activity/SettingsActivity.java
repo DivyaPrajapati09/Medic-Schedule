@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.asus.medic_schedule.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends ActionBarActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,17 +16,17 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void onAddPatientButtonClick(View view) {
-        Intent a = new Intent(getBaseContext(), Datalist_p.class);
+        Intent a = new Intent(getBaseContext(), ListOfPatients.class);
         startActivity(a);
     }
 
     public void onAddDoctorButtonClick(View view) {
-        Intent b = new Intent(getBaseContext(), Datalist_d.class);
+        Intent b = new Intent(getBaseContext(), ListOfDoctor.class);
         startActivity(b);
     }
 
     public void onAddMedicineButtonClick(View view) {
-        Intent c = new Intent(getBaseContext(), Datalist_m.class);
+        Intent c = new Intent(getBaseContext(), ListOfMedicine.class);
         startActivity(c);
     }
 }

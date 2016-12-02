@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SimpleAdapter;
 
 import com.example.asus.medic_schedule.R;
@@ -17,7 +16,7 @@ import com.example.asus.medic_schedule.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Datalist_m extends ListActivity {
+public class ListOfMedicine extends ListActivity {
 
     static final ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
     private final String DB_NAME = "MEDICDB";
@@ -74,11 +73,8 @@ public class Datalist_m extends ListActivity {
 
                 }
             }
-
-            Log.e("Datalist_m", "Total Records" + c.getCount());
         } catch (SQLiteException se) {
-            Log.e("Datalist_m", "could not create or open database" + se);
-
+            se.printStackTrace();
         }
 
         SimpleAdapter adap = new SimpleAdapter(this, list, R.layout.rowdata_m, new String[]{"m_name", "reminder", "reminder_time", "duration", "start_date", "Days", "medicine_type", "Dosage", "p_id", "d_id"}, new int[]{R.id.m_name, R.id.reminder, R.id.reminder_time, R.id.duration, R.id.start_date, R.id.days, R.id.medicine_type, R.id.dosage, R.id.p_id, R.id.d_id});
@@ -87,8 +83,7 @@ public class Datalist_m extends ListActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent c = new Intent(getBaseContext(), Medicine.class);
+                Intent c = new Intent(getBaseContext(), AddMedicineActivity.class);
                 startActivity(c);
             }
         });

@@ -5,68 +5,54 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-
 import com.example.asus.medic_schedule.R;
 
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
+public class AddMedicineActivity extends ActionBarActivity {
 
-public class Medicine extends Fragment {
+    private EditText m_name, reminder_time, duration, start_date, days, dosage;
+    private Spinner reminder, medicine_type, d_name, p_name;
+    private String name, rem_time, dur, st, d, dos, re, mt, doc_nam, pat_nam;
 
-    EditText m_name, reminder_time, duration, start_date, days, dosage;
-    Spinner reminder, medicine_type, d_name, p_name;
-    String name, rem_time, dur, st, d, dos, re, mt, doc_nam, pat_nam;
+    private SQLiteDatabase db = null;
 
-    SQLiteDatabase db = null;
-
-    private final String DB_NAME = "MEDICDB";
+    private static final String DB_NAME = "MEDICDB";
     private final String TABLE_NAME = "Medicine_DB";
 
-    ArrayList<String> d_results = new ArrayList<String>();
-    ArrayList<String> p_results = new ArrayList<String>();
+    private ArrayList<String> d_results = new ArrayList<String>();
+    private ArrayList<String> p_results = new ArrayList<String>();
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.medicine, container, false);
-    }
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.medicine);
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        m_name = (EditText) findViewById(R.id.m_name);
+        reminder = (Spinner) findViewById(R.id.reminder);
+        reminder_time = (EditText) findViewById(R.id.reminder_time);
+        duration = (EditText) findViewById(R.id.duration);
+        start_date = (EditText) findViewById(R.id.start_date);
+        days = (EditText) findViewById(R.id.days);
+        dosage = (EditText) findViewById(R.id.dosage);
 
-        m_name = (EditText)getView().findViewById(R.id.m_name);
-        reminder = (Spinner)getView().findViewById(R.id.reminder);
-        reminder_time = (EditText)getView().findViewById(R.id.reminder_time);
-        duration = (EditText)getView().findViewById(R.id.duration);
-        start_date = (EditText)getView().findViewById(R.id.start_date);
-        days = (EditText)getView().findViewById(R.id.days);
-        dosage = (EditText)getView().findViewById(R.id.dosage);
-
-        medicine_type = (Spinner)getView().findViewById(R.id.medicine_type);
-        d_name = (Spinner)getView().findViewById(R.id.d_name);
-        p_name = (Spinner)getView().findViewById(R.id.p_name);
+        medicine_type = (Spinner) findViewById(R.id.medicine_type);
+        d_name = (Spinner) findViewById(R.id.d_name);
+        p_name = (Spinner) findViewById(R.id.p_name);
 
         try {
-            db = getActivity().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
+            db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
             db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (m_id INTEGER PRIMARY KEY AUTOINCREMENT ,m_name VARCHAR,reminder INTEGER,reminder_time VARCHAR,duration VARCHAR,start_date INTEGER,Days INTEGER,medicine_type VARCHAR,Dosage INTEGER,d_name VARCHAR,p_name VARCHAR);");
         } catch (SQLiteException se) {
-            Log.e("Medicine", "could not create or open database: " + se);
+            se.printStackTrace();
         }
-        //  medicine_type.setOnItemSelectedListener(this);
         loadSpinnerDataDoctor();
         loadSpinnerDataPatient();
 
@@ -74,7 +60,6 @@ public class Medicine extends Fragment {
         reminder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-
                 re = parent.getItemAtPosition(pos).toString();
             }
 
@@ -88,7 +73,6 @@ public class Medicine extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
                 mt = parent.getItemAtPosition(pos).toString();
-                //Toast.makeText(getBaseContext(),String.valueOf(pos),Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -99,7 +83,6 @@ public class Medicine extends Fragment {
         d_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-
                 doc_nam = String.valueOf(parent);
             }
 
@@ -111,7 +94,6 @@ public class Medicine extends Fragment {
         p_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-
                 pat_nam = String.valueOf(parent);
             }
 
@@ -130,16 +112,14 @@ public class Medicine extends Fragment {
                 if (d.moveToFirst()) {
                     do {
                         String pa_name = d.getString(d.getColumnIndex("p_name"));
-
                         p_results.add(pa_name);
-                        Log.e("SpinnerPatient", "results: " + p_results);
                     } while (d.moveToNext());
                 }
             }
-            ArrayAdapter<String> aa = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, p_results);
+            ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, p_results);
             p_name.setAdapter(aa);
         } catch (SQLiteException se) {
-            Log.e("Medicine", "could not fetch the value" + se);
+            se.printStackTrace();
         }
     }
 
@@ -150,15 +130,14 @@ public class Medicine extends Fragment {
                 if (e.moveToFirst()) {
                     do {
                         String do_name = e.getString(e.getColumnIndex("d_name"));
-
                         d_results.add(do_name);
                     } while (e.moveToNext());
                 }
             }
-            ArrayAdapter<String> bb = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, d_results);
+            ArrayAdapter<String> bb = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, d_results);
             d_name.setAdapter(bb);
         } catch (SQLiteException se) {
-            Log.e("Medicine", "could not fetch the value");
+            se.printStackTrace();
         }
     }
 
