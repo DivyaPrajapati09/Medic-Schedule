@@ -10,6 +10,7 @@ import android.view.View;
 import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.fragment.AddBloodPressureFragment;
 import com.example.asus.medic_schedule.fragment.FragmentMain;
+import com.example.asus.medic_schedule.fragment.HomeScreenFragment;
 
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
@@ -26,8 +27,11 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         FragmentManager mFragmentManager = getSupportFragmentManager();
 
         switch (position) {
+            case 0:
+                mFragment = new HomeScreenFragment();
+                break;
             case 1:
-                //mFragment = new AddMedicineActivity();
+                mFragment = new HomeScreenFragment();
                 break;
             case 2:
                 mFragment = new AddBloodPressureFragment();
@@ -37,8 +41,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 break;
             case 4:
                 closeDrawer();
-                Intent intent4 = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent4);
+                mFragment = new HomeScreenFragment();
                 break;
             default:
                 mFragment = FragmentMain.newInstance(mHelpLiveo.get(position).getName());
@@ -68,7 +71,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         mHelpLiveo.addSeparator();
 
         with(this)
-                .startingPosition(2)
+                .startingPosition(0)
                 .addAllHelpItem(mHelpLiveo.getHelp())
                 .footerItem(R.string.settings, R.drawable.ic_action_settings)
                 .setOnClickUser(onClickPhoto)

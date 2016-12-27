@@ -2,7 +2,6 @@ package com.example.asus.medic_schedule.fragment;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,12 +13,15 @@ import android.widget.EditText;
 
 import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.activity.ListOfBloodPressure;
+import com.example.asus.medic_schedule.core.MedicScheduleApp;
+import com.example.asus.medic_schedule.model.BloodPressureDBModel;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class AddBloodPressureFragment extends Fragment implements View.OnClickListener {
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
 
     private EditText systol, dystol, pulse;
     private Integer sys, dys, pul, tim;
@@ -47,29 +49,14 @@ public class AddBloodPressureFragment extends Fragment implements View.OnClickLi
 
         add.setOnClickListener(this);
         view.setOnClickListener(this);
-
-        try {
-            db = getActivity().openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( systol INTEGER  ,dystol INTEGER, pulse INTEGER,date Date();");
-        } catch (SQLiteException se) {
-            se.printStackTrace();
-        }
     }
 
-    private void datetime() {
-        Date date = new Date();
-        int year = date.getYear();
-        int month = date.getMonth();
-        int day = date.getDay();
-        int hours = date.getHours();
-        int min = date.getMinutes();
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add:
-                saveBlooadPressure();
+                saveBloodPressure();
                 break;
             case R.id.btn_view:
                 Intent in = new Intent(getContext(), ListOfBloodPressure.class);
@@ -78,15 +65,12 @@ public class AddBloodPressureFragment extends Fragment implements View.OnClickLi
         }
     }
 
-    private void saveBlooadPressure() {
-        sys = Integer.parseInt(systol.getText().toString());
-        dys = Integer.parseInt(dystol.getText().toString());
-        pul = Integer.parseInt(pulse.getText().toString());
-
-        try {
-            db.execSQL("INSERT INTO " + TABLE_NAME + " (systol,dystol,pulse,time) Values (" + sys + "," + dys + " ," + pul + " );");
-        } catch (SQLiteException se) {
-            se.printStackTrace();
-        }
+    private void saveBloodPressure() {
+        BloodPressureDBModel bloodPressureDBModel = new BloodPressureDBModel();
+        bloodPressureDBModel.setSystol(Integer.parseInt(systol.getText().toString()));
+        bloodPressureDBModel.setDystol(Integer.parseInt(dystol.getText().toString()));
+        bloodPressureDBModel.setPulse(Integer.parseInt(pulse.getText().toString()));
+        bloodPressureDBModel.setDate(new Date());
+        MedicScheduleApp.daoSession.getBloodPressureDBModelDao().insertOrReplace(bloodPressureDBModel);
     }
 }

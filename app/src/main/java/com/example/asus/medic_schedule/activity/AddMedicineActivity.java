@@ -4,9 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,8 +18,12 @@ import java.util.ArrayList;
 public class AddMedicineActivity extends ActionBarActivity {
 
     private EditText m_name, reminder_time, duration, start_date, days, dosage;
-    private Spinner reminder, medicine_type, d_name, p_name;
-    private String name, rem_time, dur, st, d, dos, re, mt, doc_nam, pat_nam;
+    private Spinner d_name;
+    private Spinner p_name;
+    private String re;
+    private String mt;
+    private String doc_nam;
+    private String pat_nam;
 
     private SQLiteDatabase db = null;
 
@@ -36,14 +38,15 @@ public class AddMedicineActivity extends ActionBarActivity {
         setContentView(R.layout.medicine);
 
         m_name = (EditText) findViewById(R.id.m_name);
-        reminder = (Spinner) findViewById(R.id.reminder);
         reminder_time = (EditText) findViewById(R.id.reminder_time);
         duration = (EditText) findViewById(R.id.duration);
         start_date = (EditText) findViewById(R.id.start_date);
         days = (EditText) findViewById(R.id.days);
         dosage = (EditText) findViewById(R.id.dosage);
 
-        medicine_type = (Spinner) findViewById(R.id.medicine_type);
+        Spinner reminder = (Spinner) findViewById(R.id.reminder);
+        Spinner medicine_type = (Spinner) findViewById(R.id.medicine_type);
+
         d_name = (Spinner) findViewById(R.id.d_name);
         p_name = (Spinner) findViewById(R.id.p_name);
 
@@ -104,8 +107,8 @@ public class AddMedicineActivity extends ActionBarActivity {
         });
     }
 
-
     private void loadSpinnerDataPatient() {
+        p_results.add("Select patient name");
         try {
             Cursor d = db.rawQuery("SELECT p_name FROM Patient_DB", null);
             if (d != null) {
@@ -124,6 +127,7 @@ public class AddMedicineActivity extends ActionBarActivity {
     }
 
     private void loadSpinnerDataDoctor() {
+        d_results.add("Select doctor name");
         try {
             Cursor e = db.rawQuery("SELECT d_name FROM Doc_DB", null);
             if (e != null) {
@@ -142,19 +146,18 @@ public class AddMedicineActivity extends ActionBarActivity {
     }
 
     public void onSaveMedicineButtonClick(View view) {
-        name = m_name.getText().toString();
-        rem_time = reminder_time.getText().toString();
-        dur = duration.getText().toString();
-        st = start_date.getText().toString();
-        d = days.getText().toString();
-        dos = dosage.getText().toString();
+        String name = m_name.getText().toString();
+        String rem_time = reminder_time.getText().toString();
+        String dur = duration.getText().toString();
+        String st = start_date.getText().toString();
+        String d = days.getText().toString();
+        String dos = dosage.getText().toString();
         try {
             db.execSQL("INSERT INTO " + TABLE_NAME + "(m_name,reminder,reminder_time,duration,start_date,Days,medicine_type,Dosage,d_name,p_name) VALUES ('" + name + "','" + re + "','" + rem_time + "','" + dur + "','" + st + "','" + d + "','" + mt + "','" + dos + "','" + d_name + "','" + p_name + "');");
         } catch (SQLiteException se) {
             se.printStackTrace();
         }
     }
-
 }
 
 

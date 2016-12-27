@@ -34,7 +34,7 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem_bp> {
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.rowitem_bp, null);
+            convertView = mInflater.inflate(R.layout.row_item_blood_pressure, null);
             holder = new ViewHolder();
             holder.sys = (TextView) convertView.findViewById(R.id.Sys);
             holder.dys = (TextView) convertView.findViewById(R.id.Dys);

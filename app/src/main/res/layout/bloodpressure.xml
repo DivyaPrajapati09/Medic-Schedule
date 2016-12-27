@@ -10,17 +10,20 @@
     <EditText
         android:id="@+id/systol"
         style="@style/EditText"
-        android:hint="@string/enter_systol" />
+        android:hint="@string/enter_systol"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/dystol"
         style="@style/EditText"
-        android:hint="@string/enter_dystol" />
+        android:hint="@string/enter_dystol"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/pulse"
         style="@style/EditText"
-        android:hint="@string/enter_pulse" />
+        android:hint="@string/enter_pulse"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/btn_add"
