@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,20 @@ public class AddBloodPressureFragment extends Fragment implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add:
-                saveBloodPressure();
+                if (TextUtils.isEmpty(systol.getText())) {
+                    systol.setError("Please add Systol.");
+                }
+                if (TextUtils.isEmpty(dystol.getText())) {
+                    dystol.setError("Please add dystol.");
+                }
+                if (TextUtils.isEmpty(pulse.getText())) {
+                    pulse.setError("Please add pulse.");
+                }
+                if (!TextUtils.isEmpty(systol.getText()) &&
+                        !TextUtils.isEmpty(dystol.getText()) &&
+                        !TextUtils.isEmpty(pulse.getText())) {
+                    saveBloodPressure();
+                }
                 break;
             case R.id.btn_view:
                 Intent in = new Intent(getContext(), ListOfBloodPressure.class);
