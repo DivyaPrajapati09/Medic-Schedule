@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="4">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/Sys"
-        style="@style/TextStyle"
-        android:layout_weight="1"
-        android:textColor="@color/black" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_edittext"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/Dys"
-        style="@style/TextStyle"
-        android:layout_weight="1"
-        android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/Sys"
+            style="@style/TextStyle"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            tools:text="12" />
 
-    <TextView
-        android:id="@+id/Pul"
-        style="@style/TextStyle"
-        android:layout_weight="1"
-        android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/Dys"
+            style="@style/TextStyle"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            tools:text="15" />
 
-    <TextView
-        android:id="@+id/Time"
-        style="@style/TextStyle"
-        android:layout_weight="1"
-        android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/Pul"
+            style="@style/TextStyle"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/Time"
+            style="@style/TextStyle"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            tools:text="35" />
+    </LinearLayout>
 </LinearLayout>

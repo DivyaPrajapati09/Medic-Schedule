@@ -3,7 +3,7 @@ package com.example.asus.medic_schedule.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -27,7 +27,7 @@ public class ListOfBloodPressure extends ActionBarActivity {
         List<BloodPressureDBModel> mListOfMedicine = MedicScheduleApp.daoSession.getBloodPressureDBModelDao()
                 .queryBuilder().orderDesc(BloodPressureDBModelDao.Properties.Date).list();
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.blood_pressure_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,1));
         BloodPressureListAdapter mListAdapter = new BloodPressureListAdapter(this, mListOfMedicine);
         mRecyclerView.setAdapter(mListAdapter);
         mListAdapter.notifyDataSetChanged();
