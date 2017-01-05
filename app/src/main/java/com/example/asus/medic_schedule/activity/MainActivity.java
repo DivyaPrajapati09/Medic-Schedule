@@ -1,6 +1,5 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,9 +7,10 @@ import android.view.Menu;
 import android.view.View;
 
 import com.example.asus.medic_schedule.R;
-import com.example.asus.medic_schedule.fragment.AddBloodPressureFragment;
+import com.example.asus.medic_schedule.fragment.AddBloodSugarFragment;
 import com.example.asus.medic_schedule.fragment.FragmentMain;
 import com.example.asus.medic_schedule.fragment.HomeScreenFragment;
+import com.example.asus.medic_schedule.fragment.MedicineListFragment;
 
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
@@ -20,24 +20,25 @@ import br.liveo.navigationliveo.NavigationLiveo;
 public class MainActivity extends NavigationLiveo implements OnItemClickListener {
 
     private HelpLiveo mHelpLiveo;
+    private Fragment mFragment = null;
+    private FragmentManager mFragmentManager;
 
     @Override
     public void onItemClick(int position) {
-        Fragment mFragment = null;
-        FragmentManager mFragmentManager = getSupportFragmentManager();
+        mFragmentManager = getSupportFragmentManager();
 
         switch (position) {
             case 0:
-                mFragment = new HomeScreenFragment();
+                mFragment = new MedicineListFragment();
                 break;
             case 1:
                 mFragment = new HomeScreenFragment();
                 break;
             case 2:
-                mFragment = new AddBloodPressureFragment();
+                mFragment = new ListOfBloodPressureFragment();
                 break;
             case 3:
-                mFragment = new AddBloodPressureFragment();
+                mFragment = new AddBloodSugarFragment();
                 break;
             case 4:
                 closeDrawer();
@@ -98,8 +99,8 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         @Override
         public void onClick(View v) {
             closeDrawer();
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(intent);
+            mFragment = new SettingsActivity();
+            mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
         }
     };
 }

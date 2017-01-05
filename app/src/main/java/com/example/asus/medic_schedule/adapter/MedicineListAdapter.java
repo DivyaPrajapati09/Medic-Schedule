@@ -7,15 +7,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.asus.medic_schedule.R;
+import com.example.asus.medic_schedule.model.MedicineDBModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapter.ViewHolder> {
 
-    private ArrayList<String> mMedicineList = new ArrayList<>();
+    private List<MedicineDBModel> mMedicineList = new ArrayList<>();
     private Context mContext;
 
-    public MedicineListAdapter(Context context, ArrayList<String> medicineList) {
+    public MedicineListAdapter(Context context, List<MedicineDBModel> medicineList) {
         mContext = context;
         mMedicineList = medicineList;
     }
@@ -28,7 +30,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mMedicineName.setText(mMedicineList.get(0));
+        holder.mMedicineName.setText(mMedicineList.get(position).getMedicineName());
     }
 
     @Override

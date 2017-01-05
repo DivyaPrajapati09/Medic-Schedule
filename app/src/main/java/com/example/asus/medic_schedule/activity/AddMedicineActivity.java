@@ -1,162 +1,83 @@
 package com.example.asus.medic_schedule.activity;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import com.example.asus.medic_schedule.R;
-
-import java.util.ArrayList;
+import com.example.asus.medic_schedule.core.MedicScheduleApp;
+import com.example.asus.medic_schedule.model.MedicineDBModel;
 
 public class AddMedicineActivity extends ActionBarActivity {
 
-    private EditText m_name, reminder_time, duration, start_date, days, dosage;
-    private Spinner d_name;
-    private Spinner p_name;
-    private String re;
-    private String mt;
-    private String doc_nam;
-    private String pat_nam;
-
-    private SQLiteDatabase db = null;
-
-    private static final String DB_NAME = "MEDICDB";
-    private final String TABLE_NAME = "Medicine_DB";
-
-    private ArrayList<String> d_results = new ArrayList<String>();
-    private ArrayList<String> p_results = new ArrayList<String>();
+    private EditText mMedicineName, mMedicineDosage, mMedicineReminderTime, mMedicineExpiryDate, mMedicineQuantity;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medicine);
+        setContentView(R.layout.add_medicine_activity);
 
-        m_name = (EditText) findViewById(R.id.m_name);
-        reminder_time = (EditText) findViewById(R.id.reminder_time);
-        duration = (EditText) findViewById(R.id.duration);
-        start_date = (EditText) findViewById(R.id.start_date);
-        days = (EditText) findViewById(R.id.days);
-        dosage = (EditText) findViewById(R.id.dosage);
-
-        Spinner reminder = (Spinner) findViewById(R.id.reminder);
-        Spinner medicine_type = (Spinner) findViewById(R.id.medicine_type);
-
-        d_name = (Spinner) findViewById(R.id.d_name);
-        p_name = (Spinner) findViewById(R.id.p_name);
-
-        try {
-            db = this.openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (m_id INTEGER PRIMARY KEY AUTOINCREMENT ,m_name VARCHAR,reminder INTEGER,reminder_time VARCHAR,duration VARCHAR,start_date INTEGER,Days INTEGER,medicine_type VARCHAR,Dosage INTEGER,d_name VARCHAR,p_name VARCHAR);");
-        } catch (SQLiteException se) {
-            se.printStackTrace();
-        }
-        loadSpinnerDataDoctor();
-        loadSpinnerDataPatient();
-
-
-        reminder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mMedicineName = (EditText) findViewById(R.id.medicine_name);
+        mMedicineReminderTime = (EditText) findViewById(R.id.reminder_time);
+        mMedicineExpiryDate = (EditText) findViewById(R.id.expiry_date);
+        mMedicineDosage = (EditText) findViewById(R.id.dosage);
+        mMedicineQuantity = (EditText) findViewById(R.id.quantity);
+        mMedicineReminderTime.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                re = parent.getItemAtPosition(pos).toString();
+            public void onClick(View v) {
+                showTimeSelectionDialog();
             }
-
+        });
+        mMedicineExpiryDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+            public void onClick(View v) {
+                showDatePickerDialog();
             }
         });
 
-        medicine_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                mt = parent.getItemAtPosition(pos).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        d_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                doc_nam = String.valueOf(parent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-        p_name.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int pos, long l) {
-                pat_nam = String.valueOf(parent);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
     }
 
-    private void loadSpinnerDataPatient() {
-        p_results.add("Select patient name");
-        try {
-            Cursor d = db.rawQuery("SELECT p_name FROM Patient_DB", null);
-            if (d != null) {
-                if (d.moveToFirst()) {
-                    do {
-                        String pa_name = d.getString(d.getColumnIndex("p_name"));
-                        p_results.add(pa_name);
-                    } while (d.moveToNext());
+    private void showDatePickerDialog() {
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                mMedicineExpiryDate.setText(String.format("%s/%s/%s", String.valueOf(dayOfMonth),
+                        String.valueOf(month),
+                        String.valueOf(year)));
+            }
+        }, Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+        datePickerDialog.show();
+    }
+
+    private void showTimeSelectionDialog() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                String AM_PM = "AM";
+                if (hourOfDay > 12) {
+                    hourOfDay = hourOfDay - 12;
+                    AM_PM = "PM";
                 }
+                mMedicineReminderTime.setText(String.format("%d:%d %s", hourOfDay, minute, AM_PM));
             }
-            ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, p_results);
-            p_name.setAdapter(aa);
-        } catch (SQLiteException se) {
-            se.printStackTrace();
-        }
+        }, Calendar.HOUR_OF_DAY, Calendar.MINUTE, false);
+        timePickerDialog.show();
     }
 
-    private void loadSpinnerDataDoctor() {
-        d_results.add("Select doctor name");
-        try {
-            Cursor e = db.rawQuery("SELECT d_name FROM Doc_DB", null);
-            if (e != null) {
-                if (e.moveToFirst()) {
-                    do {
-                        String do_name = e.getString(e.getColumnIndex("d_name"));
-                        d_results.add(do_name);
-                    } while (e.moveToNext());
-                }
-            }
-            ArrayAdapter<String> bb = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, d_results);
-            d_name.setAdapter(bb);
-        } catch (SQLiteException se) {
-            se.printStackTrace();
-        }
-    }
 
     public void onSaveMedicineButtonClick(View view) {
-        String name = m_name.getText().toString();
-        String rem_time = reminder_time.getText().toString();
-        String dur = duration.getText().toString();
-        String st = start_date.getText().toString();
-        String d = days.getText().toString();
-        String dos = dosage.getText().toString();
-        try {
-            db.execSQL("INSERT INTO " + TABLE_NAME + "(m_name,reminder,reminder_time,duration,start_date,Days,medicine_type,Dosage,d_name,p_name) VALUES ('" + name + "','" + re + "','" + rem_time + "','" + dur + "','" + st + "','" + d + "','" + mt + "','" + dos + "','" + d_name + "','" + p_name + "');");
-        } catch (SQLiteException se) {
-            se.printStackTrace();
-        }
+        MedicineDBModel medicineDBModel = new MedicineDBModel();
+        medicineDBModel.setMedicineName(mMedicineName.getText().toString());
+        medicineDBModel.setExpiryDate(mMedicineExpiryDate.getText().toString());
+        medicineDBModel.setQuantity(Integer.parseInt(mMedicineQuantity.getText().toString()));
+        medicineDBModel.setTimeToTakeMedicine(mMedicineReminderTime.getText().toString());
+        MedicScheduleApp.daoSession.getMedicineDBModelDao().insertOrReplace(medicineDBModel);
     }
 }
 

@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.asus.medic_schedule.R;
-import com.example.asus.medic_schedule.activity.ListOfBloodPressure;
+import com.example.asus.medic_schedule.activity.ListOfBloodPressureFragment;
 import com.example.asus.medic_schedule.core.MedicScheduleApp;
 import com.example.asus.medic_schedule.model.BloodPressureDBModel;
 
@@ -73,7 +73,7 @@ public class AddBloodPressureFragment extends Fragment implements View.OnClickLi
                 }
                 break;
             case R.id.btn_view:
-                Intent in = new Intent(getContext(), ListOfBloodPressure.class);
+                Intent in = new Intent(getContext(), ListOfBloodPressureFragment.class);
                 startActivity(in);
                 break;
         }

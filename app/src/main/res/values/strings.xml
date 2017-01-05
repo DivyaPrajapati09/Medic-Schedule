@@ -71,4 +71,6 @@
     <string name="txt_pulse">Pulse</string>
     <string name="txt_systol">Systol</string>
     <string name="txt_time">Time</string>
+    <string name="enter_quantity">Enter quantity</string>
+    <string name="enter_expiry_date">Enter expiry date</string>
 </resources>

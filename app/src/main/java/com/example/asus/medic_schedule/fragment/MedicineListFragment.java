@@ -16,11 +16,10 @@ import com.example.asus.medic_schedule.model.MedicineDBModel;
 
 import java.util.List;
 
-public class HomeScreenFragment extends Fragment {
+public class MedicineListFragment extends Fragment {
 
-    public HomeScreenFragment() {
-    }
-
+    @Nullable
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home_screen, container, false);
     }

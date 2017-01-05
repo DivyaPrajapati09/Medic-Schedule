@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/m_name"
+        android:id="@+id/medicine_name"
         style="@style/TextStyle"
         android:layout_weight="1"
         tools:text="abcd" />
