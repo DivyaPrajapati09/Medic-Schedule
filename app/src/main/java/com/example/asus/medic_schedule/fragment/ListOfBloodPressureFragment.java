@@ -1,4 +1,4 @@
-package com.example.asus.medic_schedule.activity;
+package com.example.asus.medic_schedule.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.adapter.BloodPressureListAdapter;
 import com.example.asus.medic_schedule.core.MedicScheduleApp;
-import com.example.asus.medic_schedule.fragment.AddBloodPressureFragment;
 import com.example.asus.medic_schedule.model.BloodPressureDBModel;
 import com.example.asus.medic_schedule.model.BloodPressureDBModelDao;
 

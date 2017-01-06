@@ -10,6 +10,7 @@ import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.fragment.AddBloodSugarFragment;
 import com.example.asus.medic_schedule.fragment.FragmentMain;
 import com.example.asus.medic_schedule.fragment.HomeScreenFragment;
+import com.example.asus.medic_schedule.fragment.ListOfBloodPressureFragment;
 import com.example.asus.medic_schedule.fragment.MedicineListFragment;
 
 import br.liveo.interfaces.OnItemClickListener;

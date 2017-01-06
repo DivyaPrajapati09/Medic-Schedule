@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.asus.medic_schedule.R;
-import com.example.asus.medic_schedule.activity.ListOfBloodPressureFragment;
 import com.example.asus.medic_schedule.core.MedicScheduleApp;
 import com.example.asus.medic_schedule.model.BloodPressureDBModel;
 
