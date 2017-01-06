@@ -1,7 +1,6 @@
 package com.example.asus.medic_schedule.fragment;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,21 +15,12 @@ import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.core.MedicScheduleApp;
 import com.example.asus.medic_schedule.model.BloodPressureDBModel;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class AddBloodPressureFragment extends Fragment implements View.OnClickListener {
 
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
-
     private EditText systol, dystol, pulse;
-    private Integer sys, dys, pul, tim;
-    private SQLiteDatabase db = null;
     private Button add, view;
-
-    private final String DB_NAME = "MEDICDB";
-    private final String TABLE_NAME = "BldP_DB";
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

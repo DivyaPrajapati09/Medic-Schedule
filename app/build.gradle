@@ -28,4 +28,5 @@ dependencies {
     compile 'br.com.liveo:navigationdrawer-material:2.5.1'
     compile 'de.greenrobot:greendao:2.1.0'
     compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.github.clans:fab:1.6.4'
 }

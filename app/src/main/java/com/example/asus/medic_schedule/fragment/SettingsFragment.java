@@ -1,4 +1,4 @@
-package com.example.asus.medic_schedule.activity;
+package com.example.asus.medic_schedule.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.widget.Button;
 
 import com.example.asus.medic_schedule.R;
 
-public class SettingsActivity extends Fragment implements View.OnClickListener {
+public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     @Nullable
     @Override
@@ -30,21 +30,6 @@ public class SettingsActivity extends Fragment implements View.OnClickListener {
         addMedicineButton.setOnClickListener(this);
 
     }
-
-//    public void onAddPatientButtonClick(View view) {
-//        Intent a = new Intent(getBaseContext(), ListOfPatients.class);
-//        startActivity(a);
-//    }
-//
-//    public void onAddDoctorButtonClick(View view) {
-//        Intent b = new Intent(getBaseContext(), ListOfDoctor.class);
-//        startActivity(b);
-//    }
-//
-//    public void onAddMedicineButtonClick(View view) {
-//        Intent c = new Intent(getBaseContext(), ListOfMedicine.class);
-//        startActivity(c);
-//    }
 
     @Override
     public void onClick(View v) {

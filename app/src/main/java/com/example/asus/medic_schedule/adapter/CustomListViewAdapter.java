@@ -2,6 +2,7 @@ package com.example.asus.medic_schedule.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,9 @@ public class CustomListViewAdapter extends ArrayAdapter<RowItem_bp> {
         TextView pul;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+    @NonNull
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+        ViewHolder holder;
         RowItem_bp rowItem = getItem(position);
 
         LayoutInflater mInflater = (LayoutInflater) context

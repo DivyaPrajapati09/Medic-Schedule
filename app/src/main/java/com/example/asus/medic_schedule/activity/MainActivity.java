@@ -12,6 +12,7 @@ import com.example.asus.medic_schedule.fragment.FragmentMain;
 import com.example.asus.medic_schedule.fragment.HomeScreenFragment;
 import com.example.asus.medic_schedule.fragment.ListOfBloodPressureFragment;
 import com.example.asus.medic_schedule.fragment.MedicineListFragment;
+import com.example.asus.medic_schedule.fragment.SettingsFragment;
 
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
@@ -100,7 +101,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         @Override
         public void onClick(View v) {
             closeDrawer();
-            mFragment = new SettingsActivity();
+            mFragment = new SettingsFragment();
             mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
         }
     };

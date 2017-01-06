@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="5dp"
     android:orientation="vertical"
-    android:weightSum="2"
-    android:layout_margin="5dp">
+    android:weightSum="2">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,17 +53,20 @@
             android:choiceMode="singleChoice"
             android:divider="@color/black" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/add_blood_pressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/blood_pressure_list"
-            android:layout_alignParentRight="true"
-            android:layout_margin="20dp"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/ic_action_add"
-            app:elevation="0dp"
-            tools:ignore="RelativeOverlap,RtlHardcoded" />
+        <include layout="@layout/fab_button_layout" />
+
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/add_blood_pressure"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBottom="@+id/blood_pressure_list"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:src="@drawable/ic_action_add"-->
+            <!--app:elevation="0dp"-->
+            <!--tools:ignore="RelativeOverlap,RtlHardcoded" />-->
+
     </RelativeLayout>
 
 

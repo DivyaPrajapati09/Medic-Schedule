@@ -1,11 +1,15 @@
-package com.example.asus.medic_schedule.activity;
+package com.example.asus.medic_schedule.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -14,19 +18,29 @@ import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.core.MedicScheduleApp;
 import com.example.asus.medic_schedule.model.MedicineDBModel;
 
-public class AddMedicineActivity extends ActionBarActivity {
+public class AddMedicineFragment extends Fragment implements View.OnClickListener {
 
     private EditText mMedicineName, mMedicineDosage, mMedicineReminderTime, mMedicineExpiryDate, mMedicineQuantity;
+    private Button mAddButton;
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.add_medicine_activity, container, false);
+    }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_medicine_activity);
 
-        mMedicineName = (EditText) findViewById(R.id.medicine_name);
-        mMedicineReminderTime = (EditText) findViewById(R.id.reminder_time);
-        mMedicineExpiryDate = (EditText) findViewById(R.id.expiry_date);
-        mMedicineDosage = (EditText) findViewById(R.id.dosage);
-        mMedicineQuantity = (EditText) findViewById(R.id.quantity);
+        Button addButton = (Button) getView().findViewById(R.id.med_add);
+        addButton.setOnClickListener(this);
+        mMedicineName = (EditText) getView().findViewById(R.id.medicine_name);
+        mMedicineReminderTime = (EditText) getView().findViewById(R.id.reminder_time);
+        mMedicineExpiryDate = (EditText) getView().findViewById(R.id.expiry_date);
+        mMedicineDosage = (EditText) getView().findViewById(R.id.dosage);
+        mMedicineQuantity = (EditText) getView().findViewById(R.id.quantity);
+
         mMedicineReminderTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +58,7 @@ public class AddMedicineActivity extends ActionBarActivity {
 
     private void showDatePickerDialog() {
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 mMedicineExpiryDate.setText(String.format("%s/%s/%s", String.valueOf(dayOfMonth),
@@ -56,7 +70,7 @@ public class AddMedicineActivity extends ActionBarActivity {
     }
 
     private void showTimeSelectionDialog() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 String AM_PM = "AM";
@@ -70,8 +84,8 @@ public class AddMedicineActivity extends ActionBarActivity {
         timePickerDialog.show();
     }
 
-
-    public void onSaveMedicineButtonClick(View view) {
+    @Override
+    public void onClick(View v) {
         MedicineDBModel medicineDBModel = new MedicineDBModel();
         medicineDBModel.setMedicineName(mMedicineName.getText().toString());
         medicineDBModel.setExpiryDate(mMedicineExpiryDate.getText().toString());
