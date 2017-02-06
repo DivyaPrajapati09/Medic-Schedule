@@ -12,7 +12,6 @@ import com.example.asus.medic_schedule.fragment.FragmentMain;
 import com.example.asus.medic_schedule.fragment.HomeScreenFragment;
 import com.example.asus.medic_schedule.fragment.ListOfBloodPressureFragment;
 import com.example.asus.medic_schedule.fragment.MedicineListFragment;
-import com.example.asus.medic_schedule.fragment.SettingsFragment;
 
 import br.liveo.interfaces.OnItemClickListener;
 import br.liveo.interfaces.OnPrepareOptionsMenuLiveo;
@@ -31,10 +30,10 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
 
         switch (position) {
             case 0:
-                mFragment = new MedicineListFragment();
+                mFragment = new HomeScreenFragment();
                 break;
             case 1:
-                mFragment = new HomeScreenFragment();
+                mFragment = new MedicineListFragment();
                 break;
             case 2:
                 mFragment = new ListOfBloodPressureFragment();
@@ -79,7 +78,7 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
                 .footerItem(R.string.settings, R.drawable.ic_action_settings)
                 .setOnClickUser(onClickPhoto)
                 .setOnPrepareOptionsMenu(onPrepare)
-                .setOnClickFooter(onClickFooter)
+                //.setOnClickFooter(onClickFooter)
                 .build();
 
     }
@@ -97,12 +96,12 @@ public class MainActivity extends NavigationLiveo implements OnItemClickListener
         }
     };
 
-    private View.OnClickListener onClickFooter = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            closeDrawer();
-            mFragment = new SettingsFragment();
-            mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
-        }
-    };
+//    private View.OnClickListener onClickFooter = new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            closeDrawer();
+//            mFragment = new SettingsFragment();
+//            mFragmentManager.beginTransaction().replace(R.id.container, mFragment).commit();
+//        }
+//    };
 }

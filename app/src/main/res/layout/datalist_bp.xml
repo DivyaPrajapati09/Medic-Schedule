@@ -55,17 +55,6 @@
 
         <include layout="@layout/fab_button_layout" />
 
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/add_blood_pressure"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignBottom="@+id/blood_pressure_list"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--android:layout_margin="20dp"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:src="@drawable/ic_action_add"-->
-            <!--app:elevation="0dp"-->
-            <!--tools:ignore="RelativeOverlap,RtlHardcoded" />-->
 
     </RelativeLayout>
 

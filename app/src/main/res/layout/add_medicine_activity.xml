@@ -4,44 +4,52 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp"
     android:orientation="vertical"
-    android:padding="5dp">
-    <LinearLayout
+    android:padding="5dp"
+    android:layout_centerInParent="true">
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:layout_centerInParent="true">
 
-        <EditText
-            android:id="@+id/medicine_name"
-            style="@style/EditText"
-            android:hint="@string/enter_medicine_name" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/reminder_time"
-            style="@style/EditText"
-            android:hint="@string/enter_reminder_time" />
+            <EditText
+                android:id="@+id/medicine_name"
+                style="@style/EditText"
+                android:hint="@string/enter_medicine_name" />
 
-        <EditText
-            android:id="@+id/dosage"
-            style="@style/EditText"
-            android:hint="@string/enter_the_dosage"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/reminder_time"
+                style="@style/EditText"
+                android:hint="@string/enter_reminder_time" />
 
-        <EditText
-            android:id="@+id/quantity"
-            style="@style/EditText"
-            android:hint="@string/enter_quantity"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/dosage"
+                style="@style/EditText"
+                android:hint="@string/enter_the_dosage"
+                android:inputType="number" />
 
-        <EditText
-            android:id="@+id/expiry_date"
-            style="@style/EditText"
-            android:hint="@string/enter_expiry_date" />
+            <EditText
+                android:id="@+id/quantity"
+                style="@style/EditText"
+                android:hint="@string/enter_quantity"
+                android:inputType="number" />
 
-        <Button
-            android:id="@+id/med_add"
-            style="@style/ButtonStyle"
-            android:text="@string/save" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/expiry_date"
+                style="@style/EditText"
+                android:hint="@string/enter_expiry_date" />
+
+            <Button
+                android:id="@+id/med_add"
+                style="@style/ButtonStyle"
+                android:text="@string/save" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

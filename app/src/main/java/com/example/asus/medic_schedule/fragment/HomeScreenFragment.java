@@ -22,7 +22,7 @@ public class HomeScreenFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+        return inflater.inflate(R.layout.list_medicine_fragment, container, false);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class MedicineListAdapter extends RecyclerView.Adapter<MedicineListAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mMedicineName.setText(mMedicineList.get(position).getMedicineName());
+     //   holder.mMedicineName.setText(mMedicineList.get(position).getMedicineName());
     }
 
     @Override

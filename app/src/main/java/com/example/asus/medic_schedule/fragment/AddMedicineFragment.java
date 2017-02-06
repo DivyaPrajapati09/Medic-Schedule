@@ -18,6 +18,8 @@ import com.example.asus.medic_schedule.R;
 import com.example.asus.medic_schedule.core.MedicScheduleApp;
 import com.example.asus.medic_schedule.model.MedicineDBModel;
 
+import java.util.Locale;
+
 public class AddMedicineFragment extends Fragment implements View.OnClickListener {
 
     private EditText mMedicineName, mMedicineDosage, mMedicineReminderTime, mMedicineExpiryDate, mMedicineQuantity;
@@ -30,11 +32,12 @@ public class AddMedicineFragment extends Fragment implements View.OnClickListene
         return inflater.inflate(R.layout.add_medicine_activity, container, false);
     }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
-        Button addButton = (Button) getView().findViewById(R.id.med_add);
-        addButton.setOnClickListener(this);
+        mAddButton = (Button) getView().findViewById(R.id.med_add);
+        mAddButton.setOnClickListener(this);
         mMedicineName = (EditText) getView().findViewById(R.id.medicine_name);
         mMedicineReminderTime = (EditText) getView().findViewById(R.id.reminder_time);
         mMedicineExpiryDate = (EditText) getView().findViewById(R.id.expiry_date);
@@ -78,7 +81,7 @@ public class AddMedicineFragment extends Fragment implements View.OnClickListene
                     hourOfDay = hourOfDay - 12;
                     AM_PM = "PM";
                 }
-                mMedicineReminderTime.setText(String.format("%d:%d %s", hourOfDay, minute, AM_PM));
+                mMedicineReminderTime.setText(String.format(Locale.getDefault(), "%d:%d %s", hourOfDay, minute, AM_PM));
             }
         }, Calendar.HOUR_OF_DAY, Calendar.MINUTE, false);
         timePickerDialog.show();
@@ -89,9 +92,9 @@ public class AddMedicineFragment extends Fragment implements View.OnClickListene
         MedicineDBModel medicineDBModel = new MedicineDBModel();
         medicineDBModel.setMedicineName(mMedicineName.getText().toString());
         medicineDBModel.setExpiryDate(mMedicineExpiryDate.getText().toString());
-        medicineDBModel.setQuantity(Integer.parseInt(mMedicineQuantity.getText().toString()));
+        medicineDBModel.setQuantity(Long.parseLong(mMedicineQuantity.getText().toString()));
         medicineDBModel.setTimeToTakeMedicine(mMedicineReminderTime.getText().toString());
-        MedicScheduleApp.daoSession.getMedicineDBModelDao().insertOrReplace(medicineDBModel);
+        MedicScheduleApp.daoSession.getMedicineDBModelDao().insert(medicineDBModel);
     }
 }
 

@@ -50,16 +50,18 @@ public class ListOfBloodPressureFragment extends Fragment implements View.OnClic
 
     @Override
     public void onClick(View v) {
-
+        Fragment fragment;
+        FragmentManager fragmentManager = getFragmentManager();
         switch (v.getId()) {
             case R.id.add_record:
                 floatingActionMenu.close(true);
-                Fragment fragment = new AddBloodPressureFragment();
-                FragmentManager fragmentManager = getFragmentManager();
+                fragment = new AddBloodPressureFragment();
                 fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                 break;
             case R.id.view_graph:
                 floatingActionMenu.close(true);
+                fragment = new GraphFragment();
+                fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
                 break;
         }
 

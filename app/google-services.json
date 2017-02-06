@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1098741837008",
+    "firebase_url": "https://medic-schedule.firebaseio.com",
+    "project_id": "medic-schedule",
+    "storage_bucket": "medic-schedule.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098741837008:android:3e5addc7e9637913",
+        "android_client_info": {
+          "package_name": "com.example.asus.medic_schedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098741837008-ll3cmltjg6meggfhkpl8gdontm5u8c55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK56Cv7ZDACPYWIGzojhzpvcYTrL_Jwcg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098741837008-ll3cmltjg6meggfhkpl8gdontm5u8c55.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

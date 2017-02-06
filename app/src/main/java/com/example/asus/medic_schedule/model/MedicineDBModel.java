@@ -7,31 +7,29 @@ import org.greenrobot.greendao.annotation.Id;
 @Entity
 public class MedicineDBModel {
     @Id
-    private long id;
+    private int id;
     private String medicineName;
     private String timeToTakeMedicine;
     private boolean isTaken;
-    private int quantity;
+    private long quantity;
     private String expiryDate;
-    private long userId;
-    @Generated(hash = 521628469)
-    public MedicineDBModel(long id, String medicineName, String timeToTakeMedicine,
-            boolean isTaken, int quantity, String expiryDate, long userId) {
+    @Generated(hash = 941414222)
+    public MedicineDBModel(int id, String medicineName, String timeToTakeMedicine,
+            boolean isTaken, long quantity, String expiryDate) {
         this.id = id;
         this.medicineName = medicineName;
         this.timeToTakeMedicine = timeToTakeMedicine;
         this.isTaken = isTaken;
         this.quantity = quantity;
         this.expiryDate = expiryDate;
-        this.userId = userId;
     }
     @Generated(hash = 971482414)
     public MedicineDBModel() {
     }
-    public long getId() {
+    public int getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getMedicineName() {
@@ -52,10 +50,10 @@ public class MedicineDBModel {
     public void setIsTaken(boolean isTaken) {
         this.isTaken = isTaken;
     }
-    public int getQuantity() {
+    public long getQuantity() {
         return this.quantity;
     }
-    public void setQuantity(int quantity) {
+    public void setQuantity(long quantity) {
         this.quantity = quantity;
     }
     public String getExpiryDate() {
@@ -64,12 +62,5 @@ public class MedicineDBModel {
     public void setExpiryDate(String expiryDate) {
         this.expiryDate = expiryDate;
     }
-    public long getUserId() {
-        return this.userId;
-    }
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
 
-   
-}
+    }
